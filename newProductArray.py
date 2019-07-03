@@ -16,14 +16,10 @@ Follow-up: what if you can't use division?
 
 """
 
-
 import numpy as np
 
 startArray =[1, 20, 13, 24, 15]
-
 saP = np.prod(startArray)
-
-
 
 prodArray = []
 for e in startArray:
@@ -33,10 +29,14 @@ print(prodArray)
 
 
 
-''' if the user cannot use addition, then multiple all the other elements '''
-#print(enumerate(startArray))
+''' 
 
+if the user cannot use division, then multiple all the other elements 
+we can do this by removing the element from the list (array)
+then perform the calculation
+then add the item back into the list (array)
 
+'''
 
 print('same method without dividing >>')
 
