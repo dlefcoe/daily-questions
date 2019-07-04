@@ -40,11 +40,6 @@ then add the item back into the list (array)
 
 print('same method without dividing >>')
 
-print(startArray)
-poppedVal = startArray.pop(0)
-print(startArray)
-startArray.insert(0, poppedVal)
-print(startArray)
 
 newArray = []
 for i, val in enumerate(startArray):
