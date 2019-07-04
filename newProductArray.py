@@ -48,7 +48,7 @@ for i, val in enumerate(startArray):
     poppedVal = startArray.pop(i) # remove item from list
     saP = np.prod(startArray) # calc the product
     newArray.append(saP) 
-    startArray.insert(0, poppedVal) # put the item back into the list
+    startArray.insert(i, poppedVal) # put the item back into the list
 
 
 print(newArray)
