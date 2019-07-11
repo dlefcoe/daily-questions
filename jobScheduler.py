@@ -21,13 +21,11 @@ def do_something(i, nonceTest):
     #s.enter(10, 1, do_something, (sc,))
 
 
-def scheduleIt(timeTorunSec):
-    for i in range(10):        
-        s.enter(timeTorunSec * i, 1, do_something, argument =(i, "...completed"))
+
+# run every x seconds, for a specified number of times.
+def scheduleIt(everyX_Sec, numberOfTimes):
+    for i in range(numberOfTimes):        
+        s.enter(everyX_Sec * i, 1, do_something, argument =(i, "...completed"))
     s.run()
 
-scheduleIt(2)
-
-
-
-
+scheduleIt(2, 5)
