@@ -9,7 +9,7 @@ Implement a job scheduler which takes in a function f and an integer n, and call
 """
 
 
-print('run')
+print('running code...')
 
 i = 1
 
@@ -29,3 +29,7 @@ def scheduleIt(everyX_Sec, numberOfTimes):
     s.run()
 
 scheduleIt(2, 5)
+
+
+print('code completed !')
+
