@@ -31,6 +31,7 @@ print('sorted array:', arr)
 
 
 def findTheVal(arr):
+    # make sure array lenght is sufficient
     if len(arr) < 4:
         return 'length of array is too small'
 
