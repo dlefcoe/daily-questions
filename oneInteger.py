@@ -46,7 +46,7 @@ def findTheVal(arr):
 
 
         # check the end
-    if arr[len(arr)-1] == arr[len(arr)-2]:
+    if arr[-1] == arr[-2]:
         # the last element is good
         pass #print(arr[len(arr)-1], 'is fine')
     else:
