@@ -16,9 +16,20 @@ For example, given S = [12, 1, 61, 5, 9, 2] and k = 24, return [12, 9, 2, 1] sin
 s = [12, 1, 61, 5, 9, 2]
 k = 24
 
+s = [12, 5, 5, 4]
+k = 14
+
 
 
 def subsetSum(arr, tgt):
+    # if it naturally fits
+    if sum(arr) == k:
+        return arr
+    
+    # if list is too small
+    if len(arr) < 2:
+        return None
+
     arr.sort(reverse=True)
 
     # throw out big numbers
@@ -26,29 +37,44 @@ def subsetSum(arr, tgt):
         if val > tgt:
             arr.pop(i)
 
-    # find sequence that works
-    
-    # start with biggest numer
-    g = 0
-    newList = []
-    for i, val in enumerate(arr):
+    for j in range(len(arr)-1):
+
+        # start with biggest numer
+        g = 0
+        newList = []
+        for i, val in enumerate(arr):
+            
+            if g + val > k:
+                # the number is too big
+                pass
+            elif g + val == k:
+                # correct number and finish
+                newList.append(val)
+                return newList
+            else:
+                # the number is too low, so include and continue
+                g = g + val
+                newList.append(val)
+
+            
+
+                '''
+                this function does not work for all subsets
+                need a bit more code
+                '''
+
+            # if you have got to the end with no fit
+            if i == len(arr)-1:
+                arr.pop(0)
         
-        if g + val > k:
-            # the number is too big
-            pass
-        elif g + val == k:
-            # correct number and finish
-            newList.append(val)
-        else:
-            # the number is too low, so include and continue
-            g = g + val
-            newList.append(val)
 
+        
 
-    return newList
 
 
 print(subsetSum(s, k))
+
+
 
 
 
