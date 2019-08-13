@@ -56,13 +56,6 @@ def subsetSum(arr, tgt):
                 g = g + val
                 newList.append(val)
 
-            
-
-                '''
-                this function does not work for all subsets
-                need a bit more code
-                '''
-
             # if you have got to the end with no fit
             if i == len(arr)-1:
                 arr.pop(0)
