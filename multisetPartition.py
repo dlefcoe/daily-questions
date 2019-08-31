@@ -50,6 +50,7 @@ def partMulti(m):
         return 0
     elif m[-1] == semiSum:
         print('FOUND: element', m[-1], 'which is largest number')
+        return 1
 
     # if there are 2 big numbers
     if m[-1] + m[-2] > semiSum:
