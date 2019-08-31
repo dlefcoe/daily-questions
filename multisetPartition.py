@@ -18,7 +18,10 @@ import random as r
 m = [15, 5, 20, 10, 35, 15, 10]
 m = [1,1,1,1,1,1,1,1,1, 10] # top heavy list
 m = [1,1,1,1,1,1,1,1,1, 10, 15] # double top heavy list
-m = [r.randint(0,100) for x in range(10)]
+m = [r.randint(0,100) for x in range(20)]
+
+
+
 
 def startCode(m):
     print('here is the start list:')
@@ -36,8 +39,8 @@ def partMulti(m):
     else: # odd number
         print('ODD list: cannot split into 2 equal subsets.')
         return 1
-    
-    
+
+
     print('the semi-sum is:',semiSum)
     
 
@@ -45,6 +48,8 @@ def partMulti(m):
     if m[-1] > semiSum:
         print('the list element', m[-1], 'is top heavy - cannot solve')
         return 0
+    elif m[-1] == semiSum:
+        print('FOUND: element', m[-1], 'which is largest number')
 
     # if there are 2 big numbers
     if m[-1] + m[-2] > semiSum:
@@ -58,7 +63,7 @@ def partMulti(m):
     print('iterating combinations to find the semi-sum...')
     sucess = False
 
-    for j in m[2:]:
+    for j in range(2, len(m)):
         # iterate through increasing combinations
 
         for i in it.combinations(m,j):
