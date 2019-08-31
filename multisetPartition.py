@@ -51,7 +51,7 @@ def partMulti(m):
     print('iterating combinations to find the semi-sum...')
     sucess = False
 
-    for j in range(2, len(m)-1):
+    for j in m[2:]:
         # iterate through increasing combinations
 
         for i in it.combinations(m,j):
