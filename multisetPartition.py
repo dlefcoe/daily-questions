@@ -29,8 +29,15 @@ def startCode(m):
 def partMulti(m):
     """ code to run multiset """
     m.sort()
-    semiSum = sum(m) / 2
-
+    
+    # check is sum is odd:
+    if sum(m) %2 == 0: # even number
+        semiSum = sum(m) / 2
+    else: # odd number
+        print('ODD list: cannot split into 2 equal subsets.')
+        return 1
+    
+    
     print('the semi-sum is:',semiSum)
     
 
