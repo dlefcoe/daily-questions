@@ -18,7 +18,7 @@ l2 = [-10, -10, 5, 2, 15, 100]
 lNeg = [-10, -10, -5, -2]
 l3 = [1, 2, 3]
 lOnePos = [-10, -5, -2, -8, 3]
-
+lNegNull = [-10, -10, 0, -2]
 
 def doProblem(l):
     """Take a list and work on it."""
@@ -89,9 +89,12 @@ def doProblem(l):
     return True
 
 
+
+
+# some tests of the above
 doProblem(l1)
 doProblem(l2)
 doProblem(lNeg)
 doProblem(l3)
 doProblem(lOnePos)
-
+doProblem(lNegNull)
