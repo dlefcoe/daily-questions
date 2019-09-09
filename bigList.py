@@ -64,6 +64,7 @@ def doProblem(l):
                 print('3 or more positives:', highest3[0] * highest3[1] * highest3[2])
                 return highest3[0] * highest3[1] * highest3[2]
         else:
+            print('3 or more positives:', highest3[0] * highest3[1] * highest3[2])
             return highest3[0] * highest3[1] * highest3[2]    
         
     
@@ -95,10 +96,10 @@ def doProblem(l):
 
 
 # some tests of the above
-doProblem(l1)
-doProblem(l2)
-doProblem(lNeg)
-doProblem(l3)
-doProblem(lOnePos)
-doProblem(lNegNull)
+# doProblem(l1)
+# doProblem(l2)
+# doProblem(lNeg)
+# doProblem(l3)
+# doProblem(lOnePos)
+# doProblem(lNegNull)
 doProblem(ones)
