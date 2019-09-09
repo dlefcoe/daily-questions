@@ -19,6 +19,7 @@ lNeg = [-10, -10, -5, -2]
 l3 = [1, 2, 3]
 lOnePos = [-10, -5, -2, -8, 3]
 lNegNull = [-10, -10, 0, -2]
+ones = [1, 1, 1, -1]
 
 def doProblem(l):
     """Take a list and work on it."""
@@ -62,6 +63,8 @@ def doProblem(l):
                 # otherwise use highest 3 positives
                 print('3 or more positives:', highest3[0] * highest3[1] * highest3[2])
                 return highest3[0] * highest3[1] * highest3[2]
+        else:
+            return highest3[0] * highest3[1] * highest3[2]    
         
     
 
@@ -98,3 +101,4 @@ doProblem(lNeg)
 doProblem(l3)
 doProblem(lOnePos)
 doProblem(lNegNull)
+doProblem(ones)
