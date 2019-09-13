@@ -37,7 +37,7 @@ def factorsInRows(rows, numToFind):
     print('sorted list:',v)
     
     c = [x for x in v if x <= rows]
-    print(c)
+    #print(c)
 
     return len(c)    
 
