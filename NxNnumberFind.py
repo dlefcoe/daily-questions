@@ -23,12 +23,8 @@ And there are 4 12's in the table.
 
 
 
-from functools import reduce
-
 def factors(n):
-    ''' returns a dict of factors for n '''    
-    return set(reduce(list.__add__, 
-                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+    return [x for x in range(2, n//2+1) if n%x == 0]
 
 
 def factorsInRows(rows, numToFind):
