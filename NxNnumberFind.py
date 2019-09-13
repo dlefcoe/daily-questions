@@ -33,18 +33,13 @@ def factors(n):
 
 def factorsInRows(rows, numToFind):
 
-
     v = sorted(factors(numToFind))
     print('sorted list:',v)
     
-    counter = 0
-    for i in v:
-        if i <= rows:
-            counter += 1
-        else:
-            return counter
+    c = [x for x in v if x <= rows]
+    print(c)
 
-    return counter
+    return len(c)    
 
 
 
