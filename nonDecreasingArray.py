@@ -22,6 +22,10 @@ def testarray(arr):
         print(arr)
         return False
 
+    if compareToRemain(arr) == False:
+        print(arr)
+        return False
+
     badcount = 0
 
     if len(arr) <= 2:
@@ -52,14 +56,18 @@ def testarray(arr):
 
 
 def deltaMethod(arr):
-    ''' this method is not used '''
+    ''' check the sum of the slopes > 0 '''
     delta = []
 
     for i, val in enumerate(arr[1:]):
         delta.append(arr[i+1]-arr[i])
 
-    print(arr)
-    print(delta)
+    #print(arr)
+    #print(delta)
+    print('sum of delta:', sum(delta))
+    if sum(delta) < 0:
+        #sloping down
+        return False
     return True
 
 
@@ -77,18 +85,42 @@ def compToLast(arr):
 
     return True
 
+def compareToRemain(arr):
+    ''' compare to remainder of the list '''
+    badCount = 0
+    for i, val in enumerate(arr):
+        if val > min(arr[i:]):
+            badCount += 1
+            if badCount > 1:
+                return False
+    return True
+        
 
 arr = [0,0,0,0,0,0,0]
 print(testarray(arr))
+
 arr = [0,0,0,1,0,0,0]
 print(testarray(arr))
+
 arr = [10, 5, 7]
 print(testarray(arr))
+
 arr = [10, 5, 12]
 print(testarray(arr))
+
 arr = [12, 5, 2]
 print(testarray(arr))
+
 arr = [0,0,0,1,2,0,0,0]
+print(testarray(arr))
+
+arr = [1,2,1,2,1,2,1,2]
+print(testarray(arr))
+
+arr = [1,2,3,1,2,3]
+print(testarray(arr))
+
+arr = [1, 2, 0, 1]
 print(testarray(arr))
 
 # bad = [10, 5, 1]
