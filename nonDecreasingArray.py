@@ -16,7 +16,7 @@ def testarray(arr):
 
     badcount = 0
 
-    for i in enumerate(arr[:-2]):
+    for i, curr in enumerate(arr[:-2]):
 
         if arr[i] > arr[i+1]:
             # we have an issue
