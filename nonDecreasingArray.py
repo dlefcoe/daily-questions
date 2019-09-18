@@ -16,6 +16,13 @@ def testarray(arr):
 
     badcount = 0
 
+    if len(arr) <= 2:
+        #fakkin simple
+        return True
+
+    if arr[-2] > arr[-1]:
+        badcount +=1
+    
     for i, curr in enumerate(arr[:-2]):
 
         if arr[i] > arr[i+1]:
