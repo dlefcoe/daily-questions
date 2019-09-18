@@ -15,25 +15,36 @@ Given the array [10, 5, 1], you should return false, since we can't modify any o
 def testarray(arr):
 
     badcount = 0
-    prev = arr[0]
 
-    for i, cur in enumerate(arr[1:]):
+    for i in enumerate(arr[:-2]):
 
-        if cur < prev:
+        if arr[i] > arr[i+1]:
+            # we have an issue
             badcount += 1
-            arr[i+1] = prev
+            if arr[i] > arr[i+2]:
+                #arr[i] is too high
+                arr[i] = arr[i+1]
+            if arr[i] < arr[i+2]:
+                #arr[i] is fine, but arr[i+1] is too low
+                arr[i+1] = arr[i]
         
-        prev = arr[i+1]
-
         if badcount > 1:
+            print(arr)
             return False
-
+    
+    print(arr)
     return True
 
-good = [10, 5, 7]
-bad = [10, 5, 1]
-good = [1, 10, 6, 10, 6, 100]
-good = [0, 1, 1, 1, 0, 0]
-print("Should get True, False..")
-print(testarray(good), testarray(bad))
+
+
+
+arr = [10, 5, 7]
+arr = [10, 5, 12]
+arr = [12, 5]
+# bad = [10, 5, 1]
+# good = [1, 10, 6, 10, 6, 100]
+# good = [0, 1, 1, 1, 0, 0]
+print(testarray(arr))
+
+
 
