@@ -18,13 +18,17 @@ def testarray(arr):
     prints final array and returns True or False
     '''
 
-    if compToLast(arr) == False:
-        print(arr)
-        return False
+    # if compToLast(arr) == False:
+    #     print(arr)
+    #     return False
 
     if compareToRemain(arr) == False:
         print(arr)
         return False
+
+    # if compareToBegin(arr) == False:
+    #     print(arr)
+    #     return False
 
     badcount = 0
 
@@ -94,36 +98,95 @@ def compareToRemain(arr):
             if badCount > 1:
                 return False
     return True
-        
+
+def compareToBegin(arr):
+    ''' compare to begining of the list '''
+    badCount = 0
+    for i, val in enumerate(reversed(arr)):
+        if val < max(arr[i:]):
+            badCount += 1
+            if badCount > 1:
+                return False
+    return True        
+
+
+def nonDecrease(arr):
+    ''' compare elements of array to make sure increasing '''
+    print(arr)
+    
+    for i, val in enumerate(arr):
+        if i != 0:
+            # dont process first element
+
+            if val < arr[i-1]:
+                # either arr[i] is too small or arr[i-1] is too large
+                
+                # remember point of failure
+                indexToRestore = i-1
+                valToRestore = arr[i-1]
+
+                # now decrease arr[i-1] to a working value
+                arr[i-1] = arr[i]
+                # and check if this works now
+                for j, val in enumerate(arr):
+                    if j != 0:
+                        # start at j = 1
+                        if val < arr[j-1]:
+                            # this did not help, so restore the values
+                            arr[indexToRestore] = valToRestore
+
+                            # now increase arr[i] and check
+                            arr[i] = arr[i-1]
+                            for k, val in enumerate(arr[1:]):
+                                if k != 0:
+                                    # start at k = 1
+                                    if val < arr[k-1]:
+                                        # failed again
+                                        return False
+                            return True
+                return True
+    return True
+
+
+            
+
+
+
 
 arr = [0,0,0,0,0,0,0]
-print(testarray(arr))
+# print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [0,0,0,1,0,0,0]
-print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [10, 5, 7]
-print(testarray(arr))
+print(nonDecrease(arr))
+
 
 arr = [10, 5, 12]
-print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [12, 5, 2]
-print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [0,0,0,1,2,0,0,0]
-print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [1,2,1,2,1,2,1,2]
-print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [1,2,3,1,2,3]
-print(testarray(arr))
+print(nonDecrease(arr))
 
 arr = [1, 2, 0, 1]
-print(testarray(arr))
+print(nonDecrease(arr))
 
-# bad = [10, 5, 1]
+arr = [1, 2, 5, 1]
+print(nonDecrease(arr))
+
+
+# bad = [10, 5, 1]  
 # good = [1, 10, 6, 10, 6, 100]
 # good = [0, 1, 1, 1, 0, 0]
 
