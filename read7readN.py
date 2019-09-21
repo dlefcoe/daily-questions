@@ -33,13 +33,6 @@ def read7(filename, startPos):
     contents = filehandle.read(7)
     print(contents)
 
-    # while True:
-    #     contents = filehandle.read(7)
-    #     if not contents:
-    #         print('end of file')
-    #         break
-    #     print(contents)
-
     last_pos = filehandle.tell()
 
     # close the pointer to that file
