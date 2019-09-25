@@ -33,6 +33,9 @@ def parenthesesSort(pString):
             if openParen < 0:
                 n += 1
                 openParen = 0
+        else:
+            print('bad character inserted')
+
     
     # end of the string is now reached
     n = n + openParen
