@@ -161,6 +161,14 @@ def workOnRuleList(ruleList):
 
 
 def compareInequality(equality1, equality2, equality3):
+    '''
+    takes 3 inequalities and compares
+    input:
+    equality 1, 2, 3: strings of format ("A > B")
+    
+    output:
+    string = "this is good" or "this is bad"
+    '''
     
     # compare A to B
     if "A > B":
@@ -191,14 +199,9 @@ def compareInequality(equality1, equality2, equality3):
         decission = 'this is good'
     else:
         decission = 'this is bad'
-    print(decission)
+
     return decission
 
-
-
-    result = a, b, c
-    print(result)
-    return result
 
 
 print('--- work on the rule list ---')
@@ -206,7 +209,9 @@ ruleList = ['A N B', 'B NE C', 'C N A']
 a = workOnRuleList(ruleList)
 
 print('--- compare inequality for verticals---')
-compareInequality(*a[0])
+d = compareInequality(*a[0])
+print(d)
 
 print('--- compare inequality for horizontals---')
-compareInequality(*a[1])
+d = compareInequality(*a[1])
+print(d)
