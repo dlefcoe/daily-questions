@@ -137,7 +137,7 @@ def workOnRuleList(ruleList):
             print(i[0], i[1][0], i[2] )  
 
     # test horizontals
-    print('verticals:')
+    print('horizontals:')
     for i in out:
         #print('point1:', i[0], ', point2:',i[2], ', Horizontal move vector:', i[1][1])  
         if i[1][1] >= 1:
