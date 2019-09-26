@@ -77,7 +77,7 @@ def decodeDirection(point1, direction, point2):
         v[1] = v[1] + move[1] 
 
     # something like A(i,j) = B(i,j) + Move(i,j)
-    return v
+    return point1, v, point2
 
 
 
@@ -92,22 +92,45 @@ def breakIntoThreeParts(rule):
 
     return point1, move, point2
 
+
+'''
+...good code here, but dont need....
 r = 'A NW B' #len 6 rule
 tp = breakIntoThreeParts(r)
 # parse rule into decoder
 out = decodeDirection(*tp)
 print(out)
 
-r = 'A N B' # len 5 rule
+r = 'A W C' # len 5 rule
+tp = breakIntoThreeParts(r)
 # parse rule into decoder
 out = decodeDirection(*tp)
 print(out)
+'''
 
-
+# code to test decodeDirection()
 # yay = decodeDirection('A', 'ne', 'B')
 # print(yay)
 
 
+
+def workOnRuleList(ruleList):
+    ''' Takes the list of rules (as a list of strings) '''
+
+    for i in ruleList:
+        tp = breakIntoThreeParts(i)
+        out = decodeDirection(*tp)
+        print(out)
+
+    # test verticals
+
+
+    return True
+
+
+print('--- work on the rule list ---')
+ruleList = ['A N B', 'B NE C', 'C N A']
+workOnRuleList(ruleList)
 
 
 
