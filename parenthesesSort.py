@@ -53,3 +53,32 @@ print(n)
 ps = ")("
 n = parenthesesSort(ps)
 print(n)
+
+
+
+
+def stringEliminateMethod(p):
+    '''
+    input: string p
+    output: integer of len p
+    '''
+
+    while "()" in p:
+        p = p.replace("()","")
+
+
+    return len(p)
+
+
+ps = "()())()"
+n = stringEliminateMethod(ps)
+print(n)
+
+
+
+ps = ")("
+n = stringEliminateMethod(ps)
+print(n)
+
+
+
