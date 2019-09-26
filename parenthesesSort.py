@@ -63,8 +63,12 @@ def stringEliminateMethod(p):
     output: integer of len p
     '''
 
+    failSafe = 1000
     while "()" in p:
         p = p.replace("()","")
+        failSafe -= 1
+        if failSafe < 0:
+            break
 
 
     return len(p)

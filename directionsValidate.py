@@ -35,7 +35,7 @@ import math
 
 
 # these are the possible directions split horizontally and vertically
-possibleDirections = {'n':(1,0), 's':(-1,0), 'e':(0,1), 'w':(0,-1),}
+possibleDirections = {'N':(1,0), 'S':(-1,0), 'E':(0,1), 'W':(0,-1),}
 
 
 '''
@@ -67,18 +67,47 @@ def decodeDirection(point1, direction, point2):
     direction: an array [i,j]
     
     '''
-    
+
     v = [0,0]
     for i in direction:
         # get value from dict
         move = possibleDirections.get(i)
         
-
         v[0] = v[0] + move[0]
         v[1] = v[1] + move[1] 
 
     # something like A(i,j) = B(i,j) + Move(i,j)
     return v
 
-yay = decodeDirection('A', 'ne', 'B')
-print(yay)
+
+
+def breakIntoThreeParts(rule):
+    point1 = rule[0]
+    point2 = rule[-1]
+    if len(rule) == 5:
+        move = rule[2]
+    elif len(rule) == 6:
+        move = rule[2:4]
+
+
+    return point1, move, point2
+
+r = 'A NW B' #len 6 rule
+tp = breakIntoThreeParts(r)
+# parse rule into decoder
+out = decodeDirection(*tp)
+print(out)
+
+r = 'A N B' # len 5 rule
+# parse rule into decoder
+out = decodeDirection(*tp)
+print(out)
+
+
+# yay = decodeDirection('A', 'ne', 'B')
+# print(yay)
+
+
+
+
+
