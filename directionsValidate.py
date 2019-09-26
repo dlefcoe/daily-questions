@@ -117,13 +117,19 @@ print(out)
 def workOnRuleList(ruleList):
     ''' Takes the list of rules (as a list of strings) '''
 
+    out = [] #output list
     for i in ruleList:
         tp = breakIntoThreeParts(i)
-        out = decodeDirection(*tp)
-        print(out)
+        out.append(decodeDirection(*tp))
+    #print(out)    
 
     # test verticals
+    for i in out:
+        print('point1:', i[0], ', point2:',i[2], ', Vertical move vector:', i[1][0])  
 
+    # test horizontals
+    for i in out:
+        print('point1:', i[0], ', point2:',i[2], ', Horizontal move vector:', i[1][1])  
 
     return True
 
