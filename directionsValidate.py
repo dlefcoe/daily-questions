@@ -125,11 +125,27 @@ def workOnRuleList(ruleList):
 
     # test verticals
     for i in out:
-        print('point1:', i[0], ', point2:',i[2], ', Vertical move vector:', i[1][0])  
+        #print('point1:', i[0], ', point2:',i[2], ', Vertical move vector:', i[1][0])
+        if i[1][0] >= 1:
+            print(i[0], ">", i[2] )
+        elif i[1][0] == 0:
+            print(i[0],"=",i[2])
+        elif i[1][0] <= -1:
+            print(i[0],"<",i[2])
+        else:
+            print(i[0], i[1][0], i[2] )  
 
     # test horizontals
     for i in out:
-        print('point1:', i[0], ', point2:',i[2], ', Horizontal move vector:', i[1][1])  
+        #print('point1:', i[0], ', point2:',i[2], ', Horizontal move vector:', i[1][1])  
+        if i[1][1] >= 1:
+            print(i[0], ">", i[2] )
+        elif i[1][1] == 0:
+            print(i[0],"=",i[2])
+        elif i[1][1] <= -1:
+            print(i[0],"<",i[2])
+        else:
+            print(i[0], i[1][1], i[2] )  
 
     return True
 
