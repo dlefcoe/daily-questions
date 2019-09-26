@@ -125,36 +125,88 @@ def workOnRuleList(ruleList):
 
     # test verticals
     print('verticals:')
+    eqV = []
     for i in out:
         #print('point1:', i[0], ', point2:',i[2], ', Vertical move vector:', i[1][0])
         if i[1][0] >= 1:
             print(i[0], ">", i[2] )
+            eqV.append(i[0] + " > " + i[2])
         elif i[1][0] == 0:
             print(i[0],"=",i[2])
+            eqV.append(i[0] + " = " + i[2])
         elif i[1][0] <= -1:
             print(i[0],"<",i[2])
+            eqV.append(i[0] + " < " + i[2])
         else:
             print(i[0], i[1][0], i[2] )  
 
     # test horizontals
     print('horizontals:')
+    eqH = []
     for i in out:
         #print('point1:', i[0], ', point2:',i[2], ', Horizontal move vector:', i[1][1])  
         if i[1][1] >= 1:
             print(i[0], ">", i[2] )
+            eqH.append(i[0] + " > " + i[2])
         elif i[1][1] == 0:
             print(i[0],"=",i[2])
+            eqH.append(i[0] + " = " + i[2])
         elif i[1][1] <= -1:
             print(i[0],"<",i[2])
+            eqH.append(i[0] + " < " + i[2])
         else:
-            print(i[0], i[1][1], i[2] )  
+            print(i[0], i[1][1], i[2] )
 
-    return True
+    return eqV, eqH
+
+
+def compareInequality(equality1, equality2, equality3):
+    
+    # compare A to B
+    if "A > B":
+        a, b = 1, 0
+    elif "A = B":
+        a, b = 0, 0
+    elif "A < B":
+        a, b = -1, 0
+    else:
+        print('inequality error')
+    
+    # compare B to C
+    if "B > C":
+        b, c = 0, -1
+    elif "B = C":
+        b, c = 0, 0
+    elif "B < C":
+        b, c = 0, 1
+    else:
+        print('inequality error')
+
+    # check if A to C is valid
+    if a > c and equality3 == 'A > C':
+        decission = 'this is good'
+    elif a == c and equality3 == 'A = C':
+        decission = 'this is good'
+    elif a < c and equality3 == 'A < C':
+        decission = 'this is good'
+    else:
+        decission = 'this is bad'
+    print(decission)
+    return decission
+
+
+
+    result = a, b, c
+    print(result)
+    return result
 
 
 print('--- work on the rule list ---')
 ruleList = ['A N B', 'B NE C', 'C N A']
-workOnRuleList(ruleList)
+a = workOnRuleList(ruleList)
 
+print('--- compare inequality for verticals---')
+compareInequality(*a[0])
 
-
+print('--- compare inequality for horizontals---')
+compareInequality(*a[1])
