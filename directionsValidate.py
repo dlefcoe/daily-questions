@@ -206,6 +206,7 @@ def compareInequality(equality1, equality2, equality3):
 
 print('--- work on the rule list ---')
 ruleList = ['A N B', 'B NE C', 'C N A']
+ruleList = ['A N B', 'B E C', 'A N C']
 a = workOnRuleList(ruleList)
 
 print('--- compare inequality for verticals---')
@@ -215,3 +216,6 @@ print(d)
 print('--- compare inequality for horizontals---')
 d = compareInequality(*a[1])
 print(d)
+
+
+
