@@ -32,13 +32,41 @@ class Node:
 
 
 
+# make binary tree
+
+# root of tree
 root = Node(100)
 
+
+# left side
+root.left = Node(90)
+root.left.left = Node(80)
+root.left.right = Node(95)
+
+# right side
+root.right = Node(110)
+root.right.right = Node(120)
+root.right.left = Node(105)
+
+
+
+
+'''
 root.makeLeft(99)
 root.makeRight(101)
+'''
 
 
-print(root.val, root.left, root.right)
+# print root of tree
+print(root.val, root.left.val, root.right.val)
+
+# print second (left) level of tree
+print(root.left.val, root.left.left.val, root.left.right.val)
+
+# print second (right) level of tree
+print(root.right.val, root.right.left.val, root.right.right.val)
 
 
 
+
+# now check the tree
