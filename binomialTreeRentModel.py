@@ -13,36 +13,56 @@ v = [u * p] + [d * (1-p)]
 given one can assume the fair value v and a probability of getting paid for the period
 construct a binomial tree that computed the child legs.
 
-the function woulf be
+the function would be
 f(v, p) returns u, d
+
+step 2:
+assuming we know the outcomes
+compute (and store) the next values on the tree
 
 '''
 
 
-
-
 class Node:
     """Class to represent a node."""
+
+    goodprob = 0.9
+    badprob = 1 - goodprob
+    rent = 1000
+    shitrate = 250
+
     def __init__(self, val=None, l=None, r=None):
         self.val = val
         self.l = l
         self.r = r
 
     def __repr__(self):
-        """Define output of print function."""
+        # """Define output of print function."""
         if self.l or self.r:
-            return f"{self.val}[{self.l},{self.r}]"
+            return (f"{self.val}[{self.l},{self.r}]")
         return str(self.val)
 
-rent = 1000, default = 250
-goodprob = 0.9
-badprob = 1.0 - goodprob
+    def getfairvalue(self):
+        return self.l.val + self.r.val
 
-rent_tree = Node(rent, Node(rent * goodprob), Node(default * badprob))
+    def createleft(self):
+        self.l= Node(Node.rent * Node.goodprob)
 
-print(rent_tree)
+    def createright(self):
+        self.r= Node(Node.shitrate * Node.badprob)
+
+
+root = Node()
+
+root.createleft()
+root.createright()
+root.val = root.getfairvalue()
+
+print(root)
+
 
 """
 output is:
-1000[900.0,24.999999999999993]
+925.0[900.0,24.999999999999993]
+
 """
