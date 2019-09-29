@@ -11,6 +11,8 @@ than or equal to the root and the key in the right child must be greater than or
 '''
 
 
+import random as rnd
+
 
 class Node:
     def __init__(self, val):
@@ -19,16 +21,18 @@ class Node:
         self.val = val
 
     def makeRight(self, r):
-        self.right = r
+        self.right = Node(r)
         # condition that right node >= root
         if r < self.val:
             self.right = self.val
 
     def makeLeft(self, l):
-        self.left = l
+        self.left = Node(l)
         # condition that left node <= root
         if l > self.val:
             self.left = self.val
+
+
 
 
 
@@ -39,9 +43,15 @@ root = Node(100)
 
 
 # left side
+root.makeLeft(rnd.randint(0,200))
+root.left.makeLeft(rnd.randint(0,200))
+root.left.makeRight(rnd.randint(0,200))
+
+'''
 root.left = Node(90)
 root.left.left = Node(80)
 root.left.right = Node(95)
+'''
 
 # right side
 root.right = Node(110)
@@ -58,10 +68,10 @@ root.makeRight(101)
 
 
 # print root of tree
-print(root.val, root.left.val, root.right.val)
+print(root.val, root.left, root.right)
 
 # print second (left) level of tree
-print(root.left.val, root.left.left.val, root.left.right.val)
+print(root.left, root.left.left, root.left.right)
 
 # print second (right) level of tree
 print(root.right.val, root.right.left.val, root.right.right.val)
