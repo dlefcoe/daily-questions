@@ -22,44 +22,44 @@ compute (and store) the next values on the tree
 
 '''
 
-
 class Node:
     """Class to represent a node."""
-
     goodprob = 0.9
     badprob = 1 - goodprob
     rent = 1000
     shitrate = 250
 
-    def __init__(self, val=None, l=None, r=None):
+    def __init__(self, val=None, up=None, dn=None):
         self.val = val
-        self.l = l
-        self.r = r
+        self.up = up
+        self.dn = dn
 
     def __repr__(self):
         # """Define output of print function."""
-        if self.l or self.r:
-            return (f"{self.val}[{self.l},{self.r}]")
+        if self.up or self.dn:
+            return f"{self.val}[{self.up},{self.dn}]"
         return str(self.val)
 
     def getfairvalue(self):
-        return self.l.val + self.r.val
+        if self.up and self.dn:
+            return self.up.val + self.dn.val
 
-    def createleft(self):
-        self.l= Node(Node.rent * Node.goodprob)
+    def mkup(self):
+        self.up= Node(Node.rent * Node.goodprob)
 
-    def createright(self):
-        self.r= Node(Node.shitrate * Node.badprob)
+    def mkdn(self):
+        self.dn= Node(Node.shitrate * Node.badprob)
+
+    def mkupdn(self):
+        self.mkup()
+        self.mkdn()
 
 
 root = Node()
-
-root.createleft()
-root.createright()
+root.mkupdn()
 root.val = root.getfairvalue()
 
 print(root)
-
 
 """
 output is:
