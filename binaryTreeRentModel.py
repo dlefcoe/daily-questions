@@ -115,11 +115,6 @@ class Monthly:
     
 
 
-
-    
-
-
-
 # set the root
 tenantStart = True # assume tenant is good
 contractedRent = 1000
@@ -138,6 +133,21 @@ root = Monthly(startValue, tenantStart, contractedRent)
 
 print(f'bad tenant: {root.goodTenant}, {round(root.up,4)}, {round(root.dn,4)}')
 
+# a list for the nodes
+level = []
+n = []
+
+# level.append(n.append(root.val))
+
+level.append(n.append(root.val))
+level.append(['hello', 'b'])
+
+print('level ---> ',level[0])
+print('n --->', n[0])
+print('level, n ---> ', level[[0][0]])
+print('level, n ---> ', level[[1][0]])
+
+# do the next node
 
 
 
