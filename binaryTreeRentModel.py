@@ -133,19 +133,46 @@ root = Monthly(startValue, tenantStart, contractedRent)
 
 print(f'bad tenant: {root.goodTenant}, {round(root.up,4)}, {round(root.dn,4)}')
 
-# a list for the nodes
+'''
+refenence by level and branch
+level 0 - branch 0
+level 1 - branch 0, 1
+level 2 - branch 0, 1, 2, 3  (4 of these)
+level 3 - branch 0, 1, 2, 3, 4, 5, 6, 7   (8 of these)
+...
+level n - branch 0, ...  , 2**n -1   (2**n of these)
+'''
+
+
+# a list of lists for the nodes (levels contain 2**n branches)
 level = []
-n = []
+branch = []
 
-# level.append(n.append(root.val))
+# start with [0][0]
+# append the branch
+branch.append(root)
+# insert branch into level
+level.append(branch)
+print('level0, branch0 val ---> ', level[0][0].val)
+print('level0, branch0 dn ---> ', level[0][0].dn)
+print('level0, branch0 up ---> ', level[0][0].up)
 
-level.append(n.append(root.val))
+
+# braches in level 1
+#branch.append(Monthly(level[0][0]))
+
+
 level.append(['hello', 'b'])
 
-print('level ---> ',level[0])
-print('n --->', n[0])
-print('level, n ---> ', level[[0][0]])
-print('level, n ---> ', level[[1][0]])
+
+# print('level0 ---> ',level[0])
+# print('n --->', branch[0])
+# print('level0, n0 ---> ', level[0][0])
+# print('level1 ---> ', level[1])
+# print('level1, n0 ---> ', level[1][0])
+# print('level1, n1 ---> ', level[1][1])
+
+
 
 # do the next node
 
