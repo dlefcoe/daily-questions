@@ -20,9 +20,8 @@ def contigElem(intList, sumReq):
     returns: a list representing the contiguous string.
     '''
 
-    
-    # done
 
+    
     miniList = []
     for i, v in enumerate(intList):
         for j in intList[i:]:
