@@ -38,7 +38,7 @@ def contigElem(intList, sumReq):
 
         
 
-    return None
+    return 'no contiguous list found'
 
 
 intList = [1, 2, 3, 4, 5]
