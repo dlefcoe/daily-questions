@@ -21,7 +21,7 @@ def contigElem(intList, sumReq):
     '''
 
     miniList = []
-    for i in intList:
+    for i, v in enumerate(intList):
         for j in intList[i:]:
             miniList.append(j)
             if sum(miniList) == k:
