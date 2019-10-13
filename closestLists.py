@@ -27,7 +27,7 @@ def closestElements(*lsts):
 
 
     # list of possibilities
-    allPossible = it.product(a, b, c)
+    allPossible = list(it.product(a, b, c))
     
     # initalise before loop
     rMin = max(a + b + c) - min(a + b + c) # r to largest possible
@@ -36,11 +36,11 @@ def closestElements(*lsts):
     for i in allPossible:
         r = max(i) - min(i)
         if r < rMin:
-            result = i
+            result = list(reversed(i))
             rMin = r
 
        
-    
+
 
     return result
 
