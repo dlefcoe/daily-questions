@@ -8,8 +8,7 @@ null  <- prev - [data]  <- prev - [data]  <- prev - [data] <- prev - null
       - next -> [ head ]  - next -> [  1 ]  - next -> [  2 ] - next ->
 
 
-
-
+Example of usage at the bottom.
 
 '''
 
