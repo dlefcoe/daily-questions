@@ -4,6 +4,7 @@ This question is asked by Darren
 
 given a set of lists that contain integer numbers
 find the closest elements within the lists
+one number must be selected from each list
 
 for example a = [3, 5, 10], b = [1, 9, 15],  c = [4, 8]
 
