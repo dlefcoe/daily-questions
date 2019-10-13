@@ -1,5 +1,17 @@
 
+'''
 
+double linked list.
+
+looks like this:
+null  <- prev - [data]  <- prev - [data]  <- prev - [data] <- prev - null
+      - next -> [  1 ]  - next -> [  2 ]  - next -> [  3 ] - next ->
+
+
+
+
+
+'''
 
 
 
