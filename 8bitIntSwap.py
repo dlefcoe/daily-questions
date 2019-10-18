@@ -43,22 +43,24 @@ print(result)
 
 
 
-# this is for the bonus points
+# multiline method using list comprehension
 def multiLineMethod(inVal):
     #outVal = [int(b), int(a) for a, b in zip(inVal[x for x in inVal if int(x)%2==0], [x for x in inVal if int(x)%2!=0])]
     evens = [int(x) for x in inVal if int(x)%2==0]
     odds = [int(x) for x in inVal if int(x)%2!=0]
     r = [(a,b) for a,b in list(zip(evens, odds))]
-    return r
+    # list of tuples back to list
+    r1 = [item for t in r for item in t] 
+    return r1
 
-# test the one line method
+# test the multiline list comprehension method
 input = '10101010'
 result = multiLineMethod(input)
 print(result)
 
 
 
-# this is for the REAL bonus points
+# this is for the bonus points
 def singleLineMethod(inVal):
     r1 = [item for t in [(a,b) for a,b in list(zip([int(x) for x in inVal if int(x)%2==0],  [int(x) for x in inVal if int(x)%2!=0]))] for item in t]
     return r1
