@@ -84,5 +84,6 @@ input = '10101010'
 result = shortSweet(input)
 print(result)
 
+# done
 
 
