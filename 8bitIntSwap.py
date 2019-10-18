@@ -60,8 +60,8 @@ print(result)
 
 # this is for the REAL bonus points
 def singleLineMethod(inVal):
-    r = [(a,b) for a,b in list(zip([int(x) for x in inVal if int(x)%2==0],  [int(x) for x in inVal if int(x)%2!=0]))]
-    return r
+    r1 = [item for t in [(a,b) for a,b in list(zip([int(x) for x in inVal if int(x)%2==0],  [int(x) for x in inVal if int(x)%2!=0]))] for item in t]
+    return r1
 
 # test the one line method
 input = '10101010'
