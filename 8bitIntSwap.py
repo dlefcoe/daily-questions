@@ -70,3 +70,19 @@ def singleLineMethod(inVal):
 input = '10101010'
 result = singleLineMethod(input)
 print(result)
+
+
+
+# short sweet one line method for the real bonus points
+def shortSweet(inVal):
+    #outVal = [inVal[i+1] for i,v in enumerate(inVal) if i%2==0]
+    outVal = [inVal[i+1] if i%2==0 else inVal[i-1] for i,v in enumerate(inVal)]
+    
+    return outVal
+
+input = '10101010'
+result = shortSweet(input)
+print(result)
+
+
+
