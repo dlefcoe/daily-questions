@@ -24,10 +24,14 @@ class Node:
 
 
 
+
+
 # Compute the "maxDepth" of a tree -- the number of nodes  
 # along the longest path from the root node down to the  
 # farthest leaf node 
-def maxDepth(node): 
+def maxDepth(node):
+    global counter
+    counter += 1
     if node is None: 
         return 0 ;  
   
@@ -35,8 +39,8 @@ def maxDepth(node):
   
         # Compute the depth of each subtree 
         lDepth = maxDepth(node.left) 
-        rDepth = maxDepth(node.right) 
-  
+        rDepth = maxDepth(node.right)
+
         # Use the larger one 
         if (lDepth > rDepth): 
             return lDepth+1
@@ -80,7 +84,8 @@ None None'''
 print(root.left.left.val)
 
 
+counter = 0
 print(f'the height of the tree is {maxDepth(root)}')
 
 
-
+print(f'counter counts: {counter}')
