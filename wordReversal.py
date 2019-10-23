@@ -30,7 +30,7 @@ def wordReverse(s, d):
     for i, v in enumerate(s):
         delimeterFound = False
         for val in d:
-            if d == val:
+            if val == v:
                 delimeterFound = True
                 break
                 
