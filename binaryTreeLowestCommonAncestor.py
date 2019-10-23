@@ -33,7 +33,7 @@ def maxDepth(node):
     global counter
     counter += 1
     if node is None: 
-        return 0 ;  
+        return 0
   
     else : 
   
@@ -57,8 +57,8 @@ root = Node(1)
      None  None'''
 
 
-root.left      = Node(2); 
-root.right     = Node(3); 
+root.left = Node(2)
+root.right = Node(3) 
     
 ''' 2 and 3 become left and right children of 1 
            1 
@@ -68,7 +68,7 @@ root.right     = Node(3);
    None None None None'''
 
 
-root.left.left  = Node(4); 
+root.left.left  = Node(4)
 '''4 becomes left child of 2 
            1 
        /       \ 
