@@ -15,14 +15,15 @@ Follow-up: Does your solution work for the following cases: "hello/world:here/",
 
 
 def wordReverse(s, d):
-    ''' takes a string, s and delimeter, d and outputs a reversed string
-    inputs:
-    s: string
-    d: string
+    """ takes a string, s, and delimeter, d, and outputs a reversed string.
+    
+    arguments:
+        s: string 
+        d: string
 
     return:
-    sOut: string
-    '''
+        sOut: string
+    """
 
     newSentence = []
     newWord = ''
@@ -59,6 +60,12 @@ r = wordReverse(sent, delimeter)
 print(r)
 
 
+
+testCase = ['hello/world:here/', 'hello//world:here']
+delimeter = '/'
+for i in testCase:
+    r = wordReverse(i, delimeter)
+    print(r)
 
 
 
