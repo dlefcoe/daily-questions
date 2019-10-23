@@ -49,6 +49,7 @@ def wordReverse(s, d):
             break
 
     newSentence.reverse()
+    #delOrder.reverse()
 
     # turn array back into string
     sOut = ''
@@ -71,7 +72,7 @@ print(r)
 
 
 testCase = ['hello/world:here/', 'hello//world:here']
-delimeter = '/'
+delimeter = ':/'
 for i in testCase:
     r = wordReverse(i, delimeter)
     print(r)
