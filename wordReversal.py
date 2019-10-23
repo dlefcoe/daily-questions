@@ -51,7 +51,7 @@ def wordReverse(s, d):
     # turn array back into string
     sOut = ''
     for i in newSentence:
-        sOut = sOut + i + d
+        sOut = sOut + i + val
     # remove last character
     sOut = sOut[:-1]
 
