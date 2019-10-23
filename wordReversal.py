@@ -26,12 +26,14 @@ def wordReverse(s, d):
     """
 
     newSentence = []
+    delOrder = []
     newWord = ''
     for i, v in enumerate(s):
         delimeterFound = False
         for val in d:
             if val == v:
                 delimeterFound = True
+                delOrder.append(val)
                 break
                 
         if delimeterFound == False:
@@ -50,8 +52,9 @@ def wordReverse(s, d):
 
     # turn array back into string
     sOut = ''
-    for i in newSentence:
-        sOut = sOut + i + val
+    for n, val in enumerate(newSentence):
+
+        sOut = sOut + val + delOrder[n-1]
     # remove last character
     sOut = sOut[:-1]
 
