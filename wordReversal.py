@@ -28,10 +28,16 @@ def wordReverse(s, d):
     newSentence = []
     newWord = ''
     for i, v in enumerate(s):
-        if v != d:
+        delimeterFound = False
+        for val in d:
+            if d == val:
+                delimeterFound = True
+                break
+                
+        if delimeterFound == False:
             # add character to the new word
             newWord = newWord + v
-        if v == d:
+        if delimeterFound == True:
             # delimeter hit
             newSentence.append(newWord)
             newWord = ''
@@ -39,13 +45,13 @@ def wordReverse(s, d):
             # end of the string
             newSentence.append(newWord)
             break
-    
+
     newSentence.reverse()
 
     # turn array back into string
     sOut = ''
     for i in newSentence:
-        sOut = sOut + i + '/'
+        sOut = sOut + i + d
     # remove last character
     sOut = sOut[:-1]
 
@@ -55,7 +61,7 @@ def wordReverse(s, d):
 
 
 sent = 'hello/world:here'
-delimeter = '/'
+delimeter = '/:'
 r = wordReverse(sent, delimeter)
 print(r)
 
