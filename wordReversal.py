@@ -21,7 +21,7 @@ def wordReverse(s, d):
     d: string
 
     return:
-    output: string
+    sOut: string
     '''
 
     newSentence = []
