@@ -41,7 +41,16 @@ def wordReverse(s, d):
     
     newSentence.reverse()
 
-    return newSentence
+    # turn array back into string
+    sOut = ''
+    for i in newSentence:
+        sOut = sOut + i + '/'
+    # remove last character
+    sOut = sOut[:-1]
+
+    return sOut
+
+
 
 
 sent = 'hello/world:here'
