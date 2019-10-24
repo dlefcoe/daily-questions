@@ -8,24 +8,24 @@ some code will go here...
 '''
 
 
-# This function has a variable with 
-# name same as s. 
-def f():  
-    s = "Me too."
-    print(s)  
-  
-# Global scope 
-s = "I love Geeksforgeeks" 
-f() 
-print(s)
+import re
 
+def solve(text, delims):
+    # create regex to match words within boundaries
+    reg, repl = re.compile(r"\b(\w+)\b"), "#nonword"
 
+    # extract all words to a list, revese the list
+    words = reversed(reg.findall(text))
 
-# This function uses global variable s 
-def f():  
-    print(s) 
-  
-# Global scope 
-s = "I love Geeksforgeeks"
-f() 
+    # substitute all words with placeholder, keeping delimeters intact
+    text = reg.sub(repl, text)
 
+    # substitude each placeholder with previously extracted words
+    for x in words:
+        text = re.sub(repl, x, text, count=1)
+
+    return text
+
+for i in ("hello/WORld:here", "hello/world:here/", "hello//world:here"):
+    answer = solve(i, delims = {"/", ":"})
+    print(i, " --> ", answer)
