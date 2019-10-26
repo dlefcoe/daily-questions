@@ -46,7 +46,7 @@ t.left = Node(2)
 t.right = Node(3) 
 
 
-t.left.left  = Node(3)
+t.left.left  = Node(3) # testing by setting != 
 
 
 
