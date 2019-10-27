@@ -17,8 +17,9 @@ startList = [-9, -2, 0, 2, 3]
 
 def squareList(startList):
     ''' Given a sorted list of integers, square the elements and give the output in sorted order. '''
-    lSquared = [x**2 for x in startList]
-    lSquared.sort()
+    lSquared = sorted([x**2 for x in startList])
+    # lSquared.sort()
+
 
     return lSquared
 
