@@ -41,9 +41,9 @@ def generalDotProduct(v1, v2):
     
     # check for same length
     if len(v1) != len(v2):
-        return 'not same lenght'
+        return 'not same length'
 
-    # multiple elements
+    # multiply elements
     s = 0
     for i in range(len(v1)):
         s += v1[i]*v2[i]

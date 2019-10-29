@@ -25,6 +25,7 @@ def smallestSet(*intervals):
     return interval
 
 
+# the original question
 x = smallestSet([0, 3], [2, 6], [3, 4], [6, 9])
 print(x)
 
