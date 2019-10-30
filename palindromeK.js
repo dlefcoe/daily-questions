@@ -15,7 +15,14 @@ For example, given 'waterrfetawx' and a k of 2, you could delete f and x to get 
 var k = 2
 var s = 'waterrfetawx'
 
+s = 'dddaabb'
+
 var letterCount = {a:0,b:0,c:0,d:0,e:0,f:0,g:0,h:0,i:0,j:0,k:0} // ...object of letters of alphabet
+
+palindrome(k,s)
+
+
+
 
 function palindrome(k, s) {
     // some code goes here
@@ -61,5 +68,4 @@ function palindrome(k, s) {
 }
 
 
-palindrome(k,s)
 
