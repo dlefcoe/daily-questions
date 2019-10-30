@@ -1,0 +1,24 @@
+{
+    "people":[
+        {
+            "name":"derrick",
+            "age":45
+        },
+        {
+            "name":"vicky",
+            "age":20
+        },
+        {
+            "name":"roy",
+            "age":75
+        },
+        {
+            "name":"stacy",
+            "age":22
+        },
+        {
+            "name":"wasim",
+            "age":31
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JSON sandbox</title>
+    </head>
+    <body>
+        <ul id="people"></ul>
+        <script>
+            var person = {
+                name:"darren",
+                age:35,
+                address:{
+                    street:"5 main street",
+                    city: "london"
+                },
+                children: ['adam', 'becky', 'clive']
+            }
+
+            console.log(person.address.street)
+            console.log(person.children[0])  // js arrays are zero based (same as py)
+
+            // convert to a json string
+            person = JSON.stringify(person)
+
+            console.log(person)
+
+            // convert back to an object
+            person = JSON.parse(person)
+            console.log(person)
+
+            var people = [{
+                name:"derrick",
+                age:45
+            },
+            {
+                name:"vicky",
+                age:20
+            },
+            {
+                name:"roy",
+                age:75
+            }
+            ]
+
+            console.log(people[1])
+            console.log(people[1].age)
+
+            // loop through array (of people)
+            var output = ''
+            for (var i = 0; i < people.length; i++) {
+                console.log(people[i])
+                output += '<li>' + people[i].name + '</li>'
+            }
+            console.log(output)
+            document.getElementById('people').innerHTML = output
+
+        </script>
+
+
+    </body>
+
+
+</html>
