@@ -25,7 +25,7 @@ palindrome(k,s)
 
 /** 
 * check for palindrome
-* @param {integer} k number of letters that can be removed 
+* @param {number} k number of letters that can be removed 
 * @param {string} s the word that is to be checked 
 */
 function palindrome(k, s) {
