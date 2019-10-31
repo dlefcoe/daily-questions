@@ -20,7 +20,7 @@ s = 'dddaabb'
 var letterCount = {a:0,b:0,c:0,d:0,e:0,f:0,g:0,h:0,i:0,j:0,k:0} // ...object of letters of alphabet
 
 palindrome(k,s)
-
+console.log(pallChecker('xdadx')) 
 
 
 /** 
@@ -71,5 +71,22 @@ function palindrome(k, s) {
     // console.log(letterCount)
 }
 
+/**
+ * 
+ * @param {string} s the string that we want to check
+ * 
+ * returns: true if pally or false otherwise  
+ */
+function pallChecker(s) {
+    s = s.toLowerCase()
 
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] != s[s.length - 1 - i]){
+            // dont match so cannot be a palindrome
+            return false
+        }
+    }
+    return true
+
+}
 
