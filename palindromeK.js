@@ -20,7 +20,7 @@ s = 'dddaabb'
 var letterCount = {a:0,b:0,c:0,d:0,e:0,f:0,g:0,h:0,i:0,j:0,k:0} // ...object of letters of alphabet
 
 palindrome(k,s)
-console.log(pallChecker('xdadx')) 
+
 
 
 /** 
@@ -60,14 +60,41 @@ function palindrome(k, s) {
     }else{console.log('this can be resolved !')}
     
     // identify letters to be removed
+    lettersToRemove = []
     Object.entries(letterCount).forEach(([key, val])=>{
         if (val % 2){
             console.log(key + ' needs to be removed')
+            lettersToRemove.push(key)
         }
     })
-    // console.log(x)
+    console.log('letters to remove:',lettersToRemove)
+    
+    // remove the letters
+    var filtered = sArray.filter(function(value, index, arr){
+        if (lettersToRemove.includes(value)){
+            // reduce letters to remove array
+            for (let i = 0; i < lettersToRemove.length; i++) {
+                if (lettersToRemove[i] == value){
+                    delete lettersToRemove[i]
+                    console.log('item removed')
+                }
+            }
+        }else{
+            return value
+        }
+        
+    })
+    console.log(filtered)
+    console.log('letters to remove:',lettersToRemove)
 
+    // now check for palindrome
+    answer = pallChecker(palindrome)
 
+    if (answer == true){
+        console.log('can make a palindrome with letter removals')
+    }else{
+        console.log('no palindrome')
+    }
     // console.log(letterCount)
 }
 
@@ -78,7 +105,7 @@ function palindrome(k, s) {
  * returns: true if pally or false otherwise  
  */
 function pallChecker(s) {
-    s = s.toLowerCase()
+    //s = s.toLowerCase()
 
     for (let i = 0; i < s.length; i++) {
         if (s[i] != s[s.length - 1 - i]){
