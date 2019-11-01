@@ -66,8 +66,8 @@ walkThroughMatrix(0,0,0,'start:')
  * @param {string} path, string of the moves
  */
 function walkThroughMatrix(n, r, d, path) {
-    v = n + m[d][r]
-    path = path + '-> [' + d + ',' + r + '] '
+    var v = n + m[d][r]
+    var path = path + '-> [' + d + ',' + r + '] '
     // can we go right
     if (r < rMax){
         // take a right step
@@ -77,7 +77,7 @@ function walkThroughMatrix(n, r, d, path) {
             // can we go down
             if (d < dMax){
                 // take a down step
-                walkThroughMatrix(n, r, d+1, path)
+                walkThroughMatrix(v, r, d+1, path)
             }else{
                 // reached the end
                 console.log(v, path)
@@ -89,13 +89,13 @@ function walkThroughMatrix(n, r, d, path) {
     // can we go down
     if (d < dMax){
         // take a down step
-        walkThroughMatrix(n, r, d+1, path)
+        walkThroughMatrix(v, r, d+1, path)
     }else{
         // reached the bottom
             // can we go right
             if (r < rMax){
                 // take a right step
-                walkThroughMatrix(n, r+1, d, path)
+                walkThroughMatrix(v, r+1, d, path)
             }else{
                 // reached the end
                 console.log(v, path)
