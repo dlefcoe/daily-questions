@@ -29,11 +29,22 @@ The most we can collect is 0 + 2 + 1 + 5 + 3 + 1 = 12 coins.
 */
 
 
+rnd = Math.round(Math.random()*10)
+console.log('random number')
+console.log(rnd)
+
 m = [
     [0,3,1,1],
     [2,0,0,4],
     [1,5,3,1]
     ]
+
+
+// generate a random matrix to test
+m = generateRandomMatrix(3,3)
+
+
+console.log(m)
 
 // test matrix
 console.log('---some tests---')
@@ -52,11 +63,14 @@ dMax = m.length-1 // max height
 console.log('matrix width:', rMax)
 console.log('matrix height:', dMax)
 
-// iterate through all possible combinations
-root = m[0][0]
+var highestPath = {value:0, path: ''}
 
-console.log('--- matrix walk throgh ---')
+// iterate through all possible combinations
+const root = m[0][0]
+
+console.log('--- matrix walk through ---')
 walkThroughMatrix(0,0,0,'start:')
+console.log(highestPath)
 
 /**
  * walk through matrix recursively
@@ -80,8 +94,12 @@ function walkThroughMatrix(n, r, d, path) {
                 walkThroughMatrix(v, r, d+1, path)
             }else{
                 // reached the end
-                console.log(v, path)
-                return
+                // console.log(v, path)
+                if (v>highestPath.value){
+                    highestPath.value = v
+                    highestPath.path = path
+                }
+                return 'done'
             }
 
     }
@@ -98,8 +116,12 @@ function walkThroughMatrix(n, r, d, path) {
                 walkThroughMatrix(v, r+1, d, path)
             }else{
                 // reached the end
-                console.log(v, path)
-                return
+                // console.log(v, path)
+                if (v>highestPath.value){
+                    highestPath.value = v
+                    highestPath.path = path
+                }
+                return 'done'
             }
     }
 
@@ -109,4 +131,19 @@ function walkThroughMatrix(n, r, d, path) {
 
 
 
+/**
+ * generate a random matrix
+ * @param {number} n the height of the matrix
+ * @param {number} m the width of the matrix
+ */
+function generateRandomMatrix(n, m) {
+    mtrx = []
+    for (let i = 0; i < n; i++) {
+        mtrx.push([])
+        for (let j = 0; j < m; j++) {
+            mtrx[i].push(Math.round(Math.random()*10))
+        }
+    }
+    return mtrx
+}
 
