@@ -54,29 +54,31 @@ console.log('matrix height:', dMax)
 root = m[0][0]
 
 console.log('--- matrix walk throgh ---')
-walkThroughMatrix(0,0,0)
+walkThroughMatrix(0,0,0,'start:')
 
 /**
  * walk through matrix recursively
  * @param {number} n, the starting point (the first call should be n=0)
  * @param {number} r , the position to the right
  * @param {number} d , the position down
+ * @param {string} path, string of the moves
  */
-function walkThroughMatrix(n, r, d) {
+function walkThroughMatrix(n, r, d, path) {
     v = n + m[d][r]
+    path = path + '-> [' + d.toString() + ',' + r.toString() + '] '
     // can we go right
     if (r < rMax){
         // take a right step
-        walkThroughMatrix(v, r+1, d)
+        walkThroughMatrix(v, r+1, d, path)
     }else{
         // reached the far right
             // can we go down
             if (d < dMax){
                 // take a down step
-                walkThroughMatrix(n, r, d+1)
+                walkThroughMatrix(n, r, d+1, path)
             }else{
                 // reached the end
-                console.log(v)
+                console.log(v, path)
                 return
             }
 
@@ -85,16 +87,16 @@ function walkThroughMatrix(n, r, d) {
     // can we go down
     if (d < dMax){
         // take a down step
-        walkThroughMatrix(n, r, d+1)
+        walkThroughMatrix(n, r, d+1, path)
     }else{
         // reached the bottom
             // can we go right
             if (r < rMax){
                 // take a right step
-                walkThroughMatrix(n, r+1, d)
+                walkThroughMatrix(n, r+1, d, path)
             }else{
                 // reached the end
-                console.log(v)
+                console.log(v, path)
                 return
             }
     }
