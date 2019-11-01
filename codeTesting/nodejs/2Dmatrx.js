@@ -36,14 +36,16 @@ m = [
     ]
 
 // test matrix
+console.log('---some tests---')
 console.log(m[0][0])
 console.log(m[0][1])
-
-
 
 d = 0
 r = 1
 console.log(m[d][r])
+console.log('---end tests---')
+
+
 
 rMax = m[0].length-1 // max width
 dMax = m.length-1 // max height
@@ -65,7 +67,7 @@ walkThroughMatrix(0,0,0,'start:')
  */
 function walkThroughMatrix(n, r, d, path) {
     v = n + m[d][r]
-    path = path + '-> [' + d.toString() + ',' + r.toString() + '] '
+    path = path + '-> [' + d + ',' + r + '] '
     // can we go right
     if (r < rMax){
         // take a right step
