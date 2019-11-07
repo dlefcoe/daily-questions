@@ -43,6 +43,12 @@ m = [
 // generate a random matrix to test
 m = generateRandomMatrix(3,3)
 
+m = [
+    [7,1,4,9],
+    [1,9,1,4],
+    [4,1,9,1],
+    [1,9,1,4]
+]
 
 console.log(m)
 
