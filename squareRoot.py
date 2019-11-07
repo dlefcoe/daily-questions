@@ -28,42 +28,43 @@ def squareRoot(n):
     # make a logical start guess
     guess = 0.1 * n
 
-    for i in range(20):
+    for i in range(1, 21):
+        print('...first batch working...')
         # do process 100 times
         if guess*guess > n:
-            print(f'{guess} is too large {i}')
+            #print(f'{guess} is too large {i}')
             guess = 0.9*guess
         elif guess*guess < n:
-            print(f'{guess} is to small {i}')
+           # print(f'{guess} is to small {i}')
             guess = 1.1*guess
         else:
-            print(f'{guess} is correct {i}')
+            #print(f'{guess} is correct {i}')
             return guess
         
     print('...second batch working...')
-    for i in range(20):
+    for j in range(1, 21):
         # do process 100 times
         if guess*guess > n:
-            print(f'{guess} is too large')
+            #print(f'{guess} is too large {i} - {j}')
             guess = 0.99*guess
         elif guess*guess < n:
-            print(f'{guess} is to small')
+            #print(f'{guess} is to small  {i} - {j}')
             guess = 1.01*guess
         else:
-            print(f'{guess} is correct')
+            #print(f'{guess} is correct  {i} - {j}')
             return guess
 
     print('...third batch working...')
-    for i in range(20):
+    for k in range(1, 21):
         # do process 100 times
         if guess*guess > n:
-            print(f'{guess} is too large')
+            #print(f'{guess} is too large  {i} - {j} - {k}')
             guess = 0.999*guess
         elif guess*guess < n:
-            print(f'{guess} is to small')
+            #print(f'{guess} is to small {i} - {j} - {k}')
             guess = 1.001*guess
         else:
-            print(f'{guess} is correct')
+            #print(f'{guess} is correct {i} - {j} - {k}')
             return guess
 
 
