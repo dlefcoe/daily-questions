@@ -31,7 +31,7 @@ import time as t
 
 
 
-class counter: # object for counting
+class counter: # (global) object for counting
     moves = 0
 
 def moveTower(height,fromPole, toPole, withPole):
