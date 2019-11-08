@@ -51,9 +51,13 @@ def moveDisk(fp,tp):
     print("moving disk from",fp,"to",tp)
 
 
-h = int(input('enter a height (+ve integer): '))
+
+# ask the user for a height
+h = int(input('enter stack height (+ve integer): '))
+
+
 start = t.time()
-moveTower(h,"A","B","C")
+moveTower(h,"A","B","C") # execute recursive function
 print('number of moves:',counter.moves)
 end = t.time()
 print('time taken (sec):', round(end - start,2))
