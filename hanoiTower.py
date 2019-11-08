@@ -35,13 +35,18 @@ class counter: # object for counting
     moves = 0
 
 def moveTower(height,fromPole, toPole, withPole):
-    ''' recursive function for moving discs ''' 
+    ''' recursive function for moving discs 
+    
+    The function ends once the height parameter condition is no longer satisfied
+        (ie. the height of pole1 & pole2 = 0)
+    ''' 
     if height >= 1:
         moveTower(height-1,fromPole,withPole,toPole)
         moveDisk(fromPole,toPole)
         moveTower(height-1,withPole,toPole,fromPole)
 
 def moveDisk(fp,tp):
+    ''' increments the counter and prints the move '''
     counter.moves += 1
     print("moving disk from",fp,"to",tp)
 
