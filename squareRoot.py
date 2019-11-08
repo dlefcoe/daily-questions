@@ -13,6 +13,9 @@ def main():
     answer = squareRoot(n)
     print(answer)
 
+    print('invoking second method')
+    rossSquareRoot(n)
+
 
 def squareRoot(n):
     ''' square root of a number by iteration 
@@ -25,11 +28,51 @@ def squareRoot(n):
     '''
 
     n = float(n)
-    # make a logical start guess
+    if n == 1:
+        return 1
+
+
+    if n < 1:
+        # make logical start guess for n < 1
+        guess = 2*n
+
+        for _ in range(1, 21):
+            if guess*guess > n:
+                guess = guess * 1.1
+            elif guess*guess < n:
+                guess = guess * 0.9
+            else:
+                return guess
+
+
+
+        for _ in range(1, 21):
+            if guess*guess > n:
+                guess = guess * 1.01
+            elif guess*guess < n:
+                guess = guess * 0.99
+            else:
+                return guess
+
+
+
+        for _ in range(1, 101):
+            if guess*guess > n:
+                guess *= 1.001
+            elif guess*guess < n:
+                guess *= 0.999
+            else:
+                return guess
+
+        return guess
+
+
+
+    # make a logical start guess for n > 1
     guess = 0.1 * n
 
+    print('...first batch working...')
     for i in range(1, 21):
-        print('...first batch working...')
         # do process 100 times
         if guess*guess > n:
             #print(f'{guess} is too large {i}')
@@ -69,6 +112,31 @@ def squareRoot(n):
 
 
     return guess
+
+
+
+
+def rossSquareRoot(n):
+    
+    n = float(n)
+    goal = n
+    iterations = 15
+    lower = 0
+    upper = goal
+
+    if n < 1:
+        upper = 1
+
+    for _ in range(iterations):
+
+        attempt = (lower + upper) / 2
+
+        if attempt * attempt < goal:
+            lower = attempt
+        else:
+            upper = attempt
+
+        print(attempt)
 
 
 

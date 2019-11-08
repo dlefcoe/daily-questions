@@ -27,97 +27,31 @@ Move 1 to 3
 
 '''
 
-
-class IllegalMoveException(Exception):
-    def __init__(self, source, dest):
-        print(f"Illegal Move from {source.name}: {source} to {dest.name}: "
-              f"{dest}")
-
-class Tower(list):
-    """Class to represent a tower."""
-    # This is just a list
-    def __init__(self, name, iterable=None):
-        """Initialise as list and set a name."""
-        self.name  = name
-        super(Tower, self).__init__()
-        self.extend(iterable or [])
-
-    @property
-    def is_empty(self):
-        """Return whether tower has zero blocks."""
-        return self.__len__() == 0
-
-    @property
-    def top(self):
-        """Get the top block."""
-        return self[-1] if not self.is_empty else 0
-
-class Hanoi:
-    """Class to represent a with n blocks game."""
-    def __init__(self, height=5):
-        """Initialise a game with 'height' number of blocks."""
-        self.a = Tower("a", (x for x in range(height, 0, -1)))
-        self.b = Tower("b")
-        self.c = Tower("c")
-        self.cols = (self.a, self.b, self.c)
-        self.history = []
-
-    def __repr__(self):
-        """Override print function to show contents of the three towers."""
-        out = ""
-        for c in self.cols:
-            out += str(c) + "\n"
-        return f"---\n{out}\n---"
-
-    def move(self, source, dest):
-        """Perform a block move from one tower to another, if legal."""
-        if not source.is_empty:
-
-            # Ensure the move is legal
-            if dest.top > source.top or dest.is_empty:
-                dest.append(source.pop())
-
-                # Add move to log
-                self.history.append((source.name, dest.name))
-
-            else:
-                # Raise exception and exit if illegal move attempted
-                raise IllegalMoveException(source, dest)
-
-    def get_possible_moves(self):
-        """Get all possible moves."""
-        legal = []
-        for source in self.cols:
-
-            # Ensure source is not empty
-            if not source.is_empty:
-
-                for dest in game.cols:
-                    # Ensure dest is not source
-                    if dest is not source:
-
-                        # Ensure move is legal
-                        if dest.top > source.top or dest.is_empty:
-
-                            # Ensure this doesn't undo the last move
-                            if not len(self.history) or \
-                                    self.history[-1] != (dest.name, source.name):
-
-                                # Add move to list of legal moves
-                                legal.append((source, dest))
-
-        return legal
+import time as t
 
 
-import time
-import random
-height = 2
 
-game = Hanoi(height)
-print(game)
-while len(game.b) < height:
-    pm = game.get_possible_moves()
-    rand = random.choice(pm)
-    game.move(*rand)
-print(f"completed game in {len(game.history)} moves!")
-print(game)
+class counter: # object for counting
+    moves = 0
+
+def moveTower(height,fromPole, toPole, withPole):
+    ''' recursive function for moving discs ''' 
+    if height >= 1:
+        moveTower(height-1,fromPole,withPole,toPole)
+        moveDisk(fromPole,toPole)
+        moveTower(height-1,withPole,toPole,fromPole)
+
+def moveDisk(fp,tp):
+    counter.moves += 1
+    print("moving disk from",fp,"to",tp)
+
+
+h = int(input('enter a height (+ve integer): '))
+start = t.time()
+moveTower(h,"A","B","C")
+print('number of moves:',counter.moves)
+end = t.time()
+print('time taken (sec):', round(end - start,2))
+
+
+
