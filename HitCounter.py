@@ -38,6 +38,7 @@ class HitCounter:
         return len(hitsInRange)
 
     def aHitOccurs(self):
+        ''' a hit occurs and gets recorded '''
         self.timestamp.append(t.time() - start)
         self.count.append(len(self.count))
 
