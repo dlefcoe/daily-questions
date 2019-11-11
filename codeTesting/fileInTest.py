@@ -30,3 +30,39 @@ print(people['clara'].age)
 
 for i in people:
     print(people[i].age)
+
+
+print('------------')
+
+class Thing:
+
+    def __init__(self, colour):
+        self.colour = colour
+        pass
+
+    doit = 100
+    bethere = 'london'
+
+print(Thing.doit)
+
+x = Thing('green')
+y = Thing
+y.doit = 101
+y.bethere = 'tokyo'
+
+
+
+class NameOfTheClass:
+    ''' description of the class '''
+
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+x = NameOfTheClass('green', 10)
+print(x.__dict__)
+
+
+
+
+
