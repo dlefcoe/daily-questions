@@ -27,7 +27,7 @@ class SparseArray:
         if val != 0:
             self.data[i] = val
 
-        if val == 0:
+        if val == 0 and i in self.data:
             del self.data[i]
 
     def get(self, i):
@@ -43,6 +43,7 @@ sparse.set(214, 3)  # Update value at index 214 to 3
 print(f"internal data    : {sparse.data}")
 print(f"effective values : {[sparse.get(x) for x in range(len(arr))]}")
 
+# remove an item of data
 sparse.set(214, 0)
 print(f"internal data    : {sparse.data}")
 
