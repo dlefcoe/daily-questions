@@ -14,28 +14,28 @@ get(i): gets the value at index i.
 
 class SparseArray:
     """A Sparse Array."""
-    def __init__(me, arr, size=None):
+    def __init__(self, arr, size=None):
         """Create dict of (index, value) for values that are not zero."""
-        me.size = size or len(arr)
-        me.data = {idx: val for idx, val in enumerate(arr) if val is not 0}
+        self.size = size or len(arr)
+        self.data = {idx: val for idx, val in enumerate(arr) if val is not 0}
 
-    def set(me, i, val):
+    def set(self, i, val):
         """Set a value."""
-        if i > me.size:
+        if i > self.size:
             raise IndexError
 
         if val != 0:
-            me.data[i] = val
+            self.data[i] = val
 
         if val == 0:
-            del me.data[i]
+            del self.data[i]
 
-    def get(me, i):
+    def get(self, i):
         """Get a value."""
-        if not 0 <= i < me.size:
+        if not 0 <= i < self.size:
             raise IndexError
 
-        return me.data.get(i, 0) # returns 0 if key not in dict
+        return self.data.get(i, 0) # returns 0 if key not in dict
 
 arr = [0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 7] + 200 * [0]
 sparse = SparseArray(arr, len(arr))
