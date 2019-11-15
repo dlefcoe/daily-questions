@@ -25,7 +25,7 @@ def main():
         [0, 1, 0, 0]]
     
     answer = largestRectangle(array)
-    print(answer)
+    print('the largest value:',answer)
 
 
 
