@@ -15,14 +15,12 @@ Return 4.
 
 '''
 
-
-
 def main():
     ''' the main code (no inputs or returns) '''
-    array = [[1, 0, 0, 0],
-        [1, 0, 1, 1],
-        [1, 0, 1, 1],
-        [0, 1, 0, 0]]
+    array = [[1, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1],
+        [1, 0, 1, 1, 1],
+        [0, 1, 0, 0, 1]]
     
     answer = largestRectangle(array)
     print('the largest value:',answer)
@@ -77,8 +75,8 @@ def largestRectangle(a):
     '''
 
     # build array for values
-    maxRect = [[0 for i in range(len(a)-1)] for j in range(len(a[0])-1) ]
-
+    maxRect = [[0 for i in range(len(a[0])-1)] for j in range(len(a)-1) ]
+    
 
     for i in range(len(a)-1):
         for j in range(len(a[0])-1):
@@ -88,10 +86,29 @@ def largestRectangle(a):
             if a[i][j]==1:
                 maxRect[i][j] = 1
                 # build a rectangle across
+
+                # area to test
+                # if extendRight([a[j] for row in a[0:i]]):
+                #     maxRect[i+1][j] = 1
+                moveX = 0
+                while a[i][j+ moveX] == 1 and j+moveX < len(a[0])-1:
+                    moveX += 1
+                    maxRect[i][j] += 1
+                    print('x across', moveX, ' at position down:across',i, j)
+                    
+                    moveY = 0
+                    while a[i+moveY][j] == 1 and i+moveY < len(a)-1:
+                        moveY += 1
+                        maxRect[i][j] += 1
+                    print('y down', moveY, ' at position down:across',i, j)
+                
+                '''
                 if a[i+1][j] == 1:
                     maxRect[i][j] += 1
                     if a[i][j+1] == 1 and a[i+1][j+1] == 1:
                         maxRect[i][j] += 2
+                '''
+
 
     print('this is the max rect:')
     print(maxRect)
@@ -113,9 +130,14 @@ def largestRectangle(a):
     return largestValue
 
 
+##
+# an array is extendable leftwards if all the elements on the LHS are = 1 
+##
+
+
 
 def extendRight(m):
-    ''' given a matrix, can it extend left 
+    ''' given a matrix (m = h*w), can it extend left 
     
     parameters:
         a: matrix of bool
@@ -123,9 +145,20 @@ def extendRight(m):
     return:
         bool, true if extendable, false otherwise
     '''
+    extendable = False
+
+    height = len(m)
+    width = len(m[0])-1
+    for i in range(height):
+        if m[i][width] == 1:
+            extendable = True
+        else:
+            extendable = False
+            return False
+    return extendable
 
 
-    pass
+    
 
 
 def extendDown():
@@ -136,3 +169,4 @@ def extendDown():
 
 if __name__ == "__main__":
     main()
+
