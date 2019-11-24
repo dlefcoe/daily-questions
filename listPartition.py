@@ -14,7 +14,7 @@ For example, given x = 10 and lst = [9, 12, 3, 5, 14, 10, 10], one partition may
 '''
 
 import numpy as np
-
+import random as rnd
 
 
 def partList(x, LLL):
@@ -35,6 +35,15 @@ def partList(x, LLL):
 if __name__ == "__main__":
     
     x, l = 10, [9, 12, 3, 5, 14, 10, 10]    
+    a = partList(x, l)
+    print(a)
+
+
+    # try the same with a massive list
+    x = 50
+    l = [rnd.randint(1,100) for x in range(100)]
+    l.append(x)
+    print(l)
     a = partList(x, l)
     print(a)
 
