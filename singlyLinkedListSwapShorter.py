@@ -20,8 +20,8 @@ class Node:
 
         if self.next:
             out += str(self.next)
-
         return out
+
 
     def doSwap(self):
         ''' swap nodes '''
@@ -71,17 +71,6 @@ def runCode():
 
 
 
-
-# this code does not get run #
-def swaptwo(node):
-    """Swap two nodes. Return head"""
-    a = node
-    b = node.next
-    c = node.next.next
-
-    b.next = a
-    a.next = c.next
-    return b
 
 
 
