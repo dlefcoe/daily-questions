@@ -63,10 +63,10 @@ def runCode():
     #     1 -> 2 -> 3 -> 4 -> 5 -> 6
     #     2 -> 1 -> 4 -> 3 -> 6 -> 5
 
-    print(tree)
+    print('original list:', tree)
     tree.doSwap()
     tree.lengthList()
-    print(tree)
+    print('swapped list:', tree)
 
 
 
