@@ -4,12 +4,16 @@
 
 '''
 
+def gray(n):
+    """Generate gray code."""
+    result = ["0", "1"]
 
+    while n > 1:
+        new = reversed(result)
+        result = ["0" + x for x in result] + ["1" + x for x in new]
+        n -= 1
 
-l = [1,2,3,4,5,6,7]
+    return result
 
-l.reverse()
-
-
-
-
+for line in gray(5):
+    print(line)
