@@ -12,7 +12,7 @@ v2 = [1, 9, 3]
 
 
 def crossProduct(v1, v2):
-    ''' multiple 2 vestors [Cross product] '''
+    ''' multiple 2 vectors [Cross product] '''
     s1 = v1[1]*v2[2] - v1[2]*v2[1]
     s2 = v1[2]*v2[0] - v1[0]*v2[2]
     s3 = v1[0]*v2[1] - v1[1]*v2[0]

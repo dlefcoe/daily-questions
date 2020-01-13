@@ -30,9 +30,11 @@ class stackItem:
 
     def pop(self):
         ''' remove last item from stack '''
-        self.value = None
-        if self.n == False:
+        if self.n == True:
             print('this is the last node')
+            self.value = None
+
+
         
 
         
@@ -52,7 +54,12 @@ def runMain():
     # remove last element from stack
     s.pop()
     print(s.__dict__)
+    #print(s.value.__dict__)
 
 
 if __name__ == "__main__":
     runMain()
+
+
+
+
