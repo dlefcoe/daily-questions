@@ -22,7 +22,7 @@ class todoItems:
 
 
 
-thing = 'fuck on bonet of car'
+thing = 'f on bonet of car'
 ideaDate = datetime.date(2019, 12, 21)
 completedDate = datetime.date(2019, 12, 21)
 
@@ -35,21 +35,21 @@ print(todoList[0].__dict__)
 
 completedList = []
 
-completedList.append('meet wearing only coat and heels')
-completedList.append('fuck in room')
-completedList.append('blow job in room')
-completedList.append('lick pussy in room')
-completedList.append('press up against wall and fuck')
-completedList.append('press up against wall and fuck')
-completedList.append('press up against wall and fuck')
-completedList.append('press up against wall and fuck')
+completedList.append('meet w only coat and h')
+completedList.append('f in room')
+completedList.append('b w in room')
+completedList.append('l p in room')
+completedList.append('press up against wall and f')
+completedList.append('press up against wall and f')
+completedList.append('press up against wall and f')
+completedList.append('press up against wall and f')
 
-completedList.append('whip ass')
-completedList.append('slap ass')
+completedList.append('wh a')
+completedList.append('sl a')
 
-completedList.append('fuck on the floor')
+completedList.append('f on the floor')
 
-completedList.append('fuck in hotel toilets')
+completedList.append('f in hotel t')
 
 
 print(completedList)
