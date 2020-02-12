@@ -30,9 +30,6 @@ premTable = premTable[0]
 # inspect datatypes of the columns
 # print(premTable.dtypes) # all are pandas objects, which are strings.
 
-# convert to correct types
-premTable[['P','W','D','L','F','A','GD','Pts']] = premTable[['P','W','D','L','F','A','GD','Pts']].apply(pd.to_numeric, errors='coerce')
-# print(premTable.dtypes)
 
 # shape of the table
 print(premTable.shape) # we see the table is 21 rows, but should be 20
@@ -41,19 +38,27 @@ print(premTable.shape) # we see the table is 21 rows, but should be 20
 # drop the last row
 premTable.drop(premTable.tail(1).index, inplace=True)
 
+# convert to correct types
+premTable[['P','W','D','L','F','A','GD','Pts']] = premTable[['P','W','D','L','F','A','GD','Pts']].apply(pd.to_numeric, errors='coerce', downcast='integer')
+# print(premTable.dtypes)
+
 # change column headings to something logical for humans
 premTable.rename(columns={'Unnamed: 0':'Position'}, inplace=True)
 premTable.rename(columns={'Unnamed: 1':'Position move'}, inplace=True)
 
-print(premTable.tail(3))
+# print(premTable.tail(3))
 
 # create new columns
 premTable['GR'] = round(premTable['F']/premTable['A'],1)
 premTable['GPG'] = round(premTable.F/premTable.P,1)
+premTable['GcPG'] = round(premTable.A/premTable.P,1)
 
 # reorder the data
-premTable = premTable[['Position', 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts', 'GR', 'GPG']]
+premTable = premTable[['Position', 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts', 'GR', 'GPG','GcPG']]
 
 
-print(premTable.head(5))
+#print(premTable.head(5))
+print(premTable)
+
+
 

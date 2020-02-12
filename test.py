@@ -58,13 +58,23 @@ def tryGet():
 
 tryGet()
 
-try:
 
-    pass
-except expression as identifier:
+
+
+def testFun(a, b):
+    """This adds a and b and returns the sum.
     
-    pass
-else:
-    pass
-finally:
-    pass
+    Arguments:
+        a {integer} -- first value
+        b {integer} -- second value
+    
+    Returns:
+        integer -- sum of the inpits
+    """
+
+    return a + b
+
+x = testFun(5, 3)
+
+
+
