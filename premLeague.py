@@ -52,13 +52,33 @@ premTable.rename(columns={'Unnamed: 1':'Position move'}, inplace=True)
 premTable['GR'] = round(premTable['F']/premTable['A'],1)
 premTable['GPG'] = round(premTable.F/premTable.P,1)
 premTable['GcPG'] = round(premTable.A/premTable.P,1)
+premTable['PPG'] = round(premTable.Pts/premTable.P,1)
+
 
 # reorder the data
-premTable = premTable[['Position', 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts', 'GR', 'GPG','GcPG']]
+premTable = premTable[['Position', 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts', 'PPG', 'GR', 'GPG','GcPG']]
 
 
 #print(premTable.head(5))
 print(premTable)
+
+totalGamesPlayed = int(sum(premTable['P']))
+totalPoints = sum(premTable['Pts'])
+averagePointsPerGame = round(totalPoints / totalGamesPlayed, 2)
+
+print(f'total games played: {totalGamesPlayed}')
+print(f'total points collected: {totalPoints}')
+print(f'average points per game: {averagePointsPerGame}')
+
+
+# print to xlsx file
+premTable.to_excel('premLeague.xlsx')
+
+print(pd.DatetimeIndex.day)
+print(pd.DatetimeIndex.year)
+print(pd.DatetimeIndex.week)
+
+
 
 
 

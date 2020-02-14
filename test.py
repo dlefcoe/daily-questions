@@ -78,3 +78,14 @@ x = testFun(5, 3)
 
 
 
+
+def foobar():
+    foo = 'hello'
+    bar = 'world'
+    print(foo, bar)
+
+
+foobar()
+
+print(x)
+print('hello')
