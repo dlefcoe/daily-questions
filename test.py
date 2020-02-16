@@ -89,3 +89,11 @@ foobar()
 
 print(x)
 print('hello')
+
+
+
+import inspect
+
+print(inspect.getmembers(foobar()))
+print('------ the source code:')
+print(inspect.getsource(foobar))
