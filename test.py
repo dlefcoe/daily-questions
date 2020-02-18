@@ -45,6 +45,7 @@ setTest()
 print('the first modules name: ' + __name__)
 
 
+
 def tryGet():
     ages = {
         'mary': 5,
@@ -57,7 +58,6 @@ def tryGet():
     print(a, b)
 
 tryGet()
-
 
 
 
@@ -75,7 +75,6 @@ def testFun(a, b):
     return a + b
 
 x = testFun(5, 3)
-
 
 
 
