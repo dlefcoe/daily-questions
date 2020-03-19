@@ -4,6 +4,14 @@
 
 '''
 import urllib.request
+import requests
+
+urlForBBC = 'https://www.bbc.co.uk/news'
+r = requests.get(urlForBBC)
+
+bbcText = r.text
+print(bbcText)
+print('----done-----')
 
 from xml.etree.ElementTree import parse
 
@@ -96,6 +104,9 @@ import inspect
 print(inspect.getmembers(foobar()))
 print('------ the source code:')
 print(inspect.getsource(foobar))
+
+
+
 
 
 
