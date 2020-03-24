@@ -1,8 +1,9 @@
 # sky dodge game
 
 # import the pygame library
-import pygame
 import os
+import pygame
+
 
 # import pygame locals for easier access to key coordiantes
 from pygame.locals import(
@@ -59,10 +60,10 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
 
-
-        if self.rect.bottom > HEIGHT - 50:
+        # dont get to close to top or bottom
+        if self.rect.bottom > HEIGHT - 10:
             self.y_speed = -3
-        if self.rect.top < 50:
+        if self.rect.top < 10:
             self.y_speed = 1
         if self.rect.left > WIDTH:
             self.rect.right = 0
