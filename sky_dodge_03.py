@@ -23,12 +23,12 @@ HEIGHT = 500
 FPS = 30
 
 # define colours
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE = (0,0,255)
-BLACK = (0,0,0)
-LIGHTBLUE = (100,100,255)
-DARKRED = (100,0,0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+BLACK = (0, 0, 0)
+LIGHTBLUE = (100, 100, 255)
+DARKRED = (100, 0, 0)
 
 # set up assets folders
 game_folder = os.path.dirname(__file__)
@@ -42,7 +42,7 @@ pygame.init()
 pygame.display.set_caption('DL game')
 
 class Player(pygame.sprite.Sprite):
-    ''' class for sprite '''
+    ''' class for player sprite '''
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         #self.image = pygame.Surface((50, 50))
@@ -68,15 +68,32 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = 0
             
 
+class Enemy(pygame.sprite.Sprite):
+    ''' class for player sprite '''
+
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        imageName = ['marsRocket_01.jpg', 'retro_aircraft_01.png', 'upRocket-02.jpg']
+        self.image = pygame.image.load(os.path.join(img_folder, imageName[2])).convert()
+        self.image.set_colorkey(BLACK)
+        self.rect = self.image.get_rect()
+        self.rect.center = (WIDTH*0.95, HEIGHT / 2)
+        self.x_speed = 0
+        self.y_speed = 0
+
+    def update(self):
+        self.rect.x += self.x_speed
+        self.rect.y += self.y_speed
 
 
 #setup the drawing window
-screen = pygame.display.set_mode((WIDTH,HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
 player = Player()
-all_sprites.add(player)
+enemy = Enemy()
+all_sprites.add(player, enemy)
 
 # run until the user asks to quit
 running = True
