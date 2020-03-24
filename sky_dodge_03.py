@@ -52,10 +52,11 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
+        self.x_speed = 5
         self.y_speed = 0
 
     def update(self):
-        self.rect.x += 5
+        self.rect.x += self.x_speed
         self.rect.y += self.y_speed
 
 
@@ -91,12 +92,18 @@ while running:
             running = False
         # key is pressed
         if event.type == pygame.KEYDOWN:
-            #down arrow pressed
+            # down arrow pressed
             if event.key == pygame.K_DOWN:
                 player.y_speed += 1
-            #up arrow pressed
+            # up arrow pressed
             if event.key == pygame.K_UP:
                 player.y_speed -= 1
+            # left arrow pressed
+            if event.key == pygame.K_LEFT:
+                player.x_speed -= 1
+            # right arrow pressed
+            if event.key == pygame.K_RIGHT:
+                player.x_speed += 1
 
 
     # update
