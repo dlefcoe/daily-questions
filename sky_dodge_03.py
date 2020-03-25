@@ -30,6 +30,7 @@ BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 LIGHTBLUE = (100, 100, 255)
 DARKRED = (100, 0, 0)
+WHITE = (255, 255, 255)
 
 # set up assets folders
 game_folder = os.path.dirname(__file__)
@@ -40,7 +41,18 @@ img_folder = os.path.join(game_folder, 'img')
 # initialise pygame
 pygame.init()
 
-pygame.display.set_caption('DL game')
+pygame.display.set_caption('DL skydodge game')
+
+# text message to player
+
+# font = pygame.font.Font('freesansbold.ttf', 30)
+font = pygame.font.SysFont('monospace',12)
+text = font.render('sky dodge text', True, WHITE, BLACK)
+textRect = text.get_rect()
+textRect.center = (WIDTH*0.60, HEIGHT*0.05)
+textRect02 = text.get_rect()
+textRect02.center = (WIDTH*0.60, HEIGHT*0.07)
+
 
 class Player(pygame.sprite.Sprite):
     ''' class for player sprite '''
@@ -52,13 +64,15 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(os.path.join(img_folder, imageName[1])).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH / 2, HEIGHT / 2)
+        self.rect.center = (WIDTH*0.25, HEIGHT / 2)
         self.x_speed = 5
         self.y_speed = 0
+        self.scale = 75
 
     def update(self):
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
+        self.image = pygame.transform.scale(self.image,(self.scale,self.scale))
 
         # dont get to close to top or bottom
         if self.rect.bottom > HEIGHT - 10:
@@ -74,18 +88,19 @@ class Enemy(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        imageName = ['marsRocket_01.jpg', 'retro_aircraft_01.png', 'upRocket-02.jpg']
-        self.image = pygame.image.load(os.path.join(img_folder, imageName[2])).convert()
-        self.image.set_colorkey(BLACK)
+        imageName = ['marsRocket_01.jpg', 'retro_aircraft_01.png', 'spaceship_24px.png', 'flaticon_rocket_512px.png']
+        self.image = pygame.image.load(os.path.join(img_folder, imageName[3])).convert()
+        self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH*0.95, HEIGHT / 2)
+        self.rect.center = (WIDTH*0.95, HEIGHT*0.50)
         self.x_speed = 0
         self.y_speed = 0
+        self.scale = 50 # scale the image size
 
     def update(self):
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
-
+        self.image = pygame.transform.scale(self.image,(self.scale,self.scale))
 
 #setup the drawing window
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -93,11 +108,20 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
 player = Player()
+
+
 enemy = Enemy()
-all_sprites.add(player, enemy)
+enemy.rect.center = (WIDTH*1.25, HEIGHT*1.0)
+enemySmall = Enemy()
+
+enemySmall.rect.center = (WIDTH*1.0, HEIGHT*0.75)
+enemySmall.scale = 20
+
+all_sprites.add(player, enemy, enemySmall)
 
 # run until the user asks to quit
 running = True
+countCrash = 0
 while running:
 
     # keep loop running at correct speed
@@ -123,6 +147,23 @@ while running:
             if event.key == pygame.K_RIGHT:
                 player.x_speed += 1
 
+    # position label
+    text = font.render('enemySmall distance measure x, y: ' + str(player.rect.x - enemySmall.rect.x) + ', ' + str(player.rect.y - enemySmall.rect.y), True, WHITE, BLACK)
+    text01 = font.render('enemyLarge distance measure x, y: ' + str(player.rect.x - enemy.rect.x) + ', ' + str(player.rect.y - enemy.rect.y), True, WHITE, BLACK)
+
+    # collision occurs
+    if abs(player.rect.x - enemySmall.rect.x) < 50 and abs(player.rect.y - enemySmall.rect.y) < 20:
+        print('condition reached')
+
+    if abs(player.rect.x - enemySmall.rect.x) <50 and abs(player.rect.y - enemySmall.rect.y) < 30:
+        countCrash += 1
+        text = font.render('count crash: ' + str(countCrash), True, WHITE, BLACK)
+        
+
+    
+    
+
+
 
     # update
     all_sprites.update()
@@ -131,9 +172,19 @@ while running:
     screen.fill(LIGHTBLUE) # fill background light blue
     all_sprites.draw(screen)
 
+    # write text
+    screen.blit(text, textRect)
+    screen.blit(text01, textRect02)
+
     # flip display
     pygame.display.flip()
 
 # done. time to quit.
 pygame.quit()
+
+
+
+
+
+
 
