@@ -39,6 +39,7 @@ def drawShape():
     for i in range(rSize):
         randomColour = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
         pen.color(randomColour)
+        #pen.color('yellow')
         pen.forward(100)
         pen.left(155)
         writeAtTop(i)
@@ -53,7 +54,7 @@ def drawShape():
     pen.pendown()
 
 
-for i in range(10):
+for i in range(3):
     drawShape()
 
 
