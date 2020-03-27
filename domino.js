@@ -37,6 +37,7 @@ function dominoDrop() {
     
     var s = '.L.R....L'
     var sArray = s.split('') // split into array
+    var rArray = []
     
     // log the result    
     console.log('the start array: ' + sArray)
@@ -69,50 +70,59 @@ function dominoDrop() {
         // need to inspect the next item
         if (sArray[1]=='L') {
             // drops to the left
-            sArray[0] = 'L'
+            rArray[0] = 'L'
         }
     } else {
         // unchanged
+        rArray[0] = sArray[0]
     }
 
     
     // inspect the middle items in the list
-    for (let i = 1; i < sArray.length-2; i++) {
+    for (let i = 1; i <= sArray.length-2; i++) {
         
         
         if (sArray[i]=='.') {
             // has no direction
 
-            // check the left
-            if (sArray[i-1]=='L') {
-                leftDom = -1
-            } else if(sArray[i-1]=='.') {
-                leftDom = 0
-            } else if(sArray[i-1] == 'R'){
-                leftDom = +1
-            }
-            
-            // check the right
-            if (sArray[i+1]=='L') {
-                rightDom = -1
-            } else if(sArray[i+1]=='.') {
-                rightDom = 0
-            } else if(sArray[i+1] == 'R'){
-                rightDom = +1
+            // nothing happens in these cases
+            // left + right
+            // right + left
+            // . + .
+            // . + right
+            // left + .
+            rArray[i] = sArray[i]
+
+            // cases when there is pushing and rArray changes
+
+            // left + left
+            if ((sArray[i-1]=='L') && (sArray[i+1]=='L')) {
+                rArray[i] = 'L'
             }
 
-            // add the values
-            netForce = leftDom + rightDom
-
-            // the net force determines the direction
-            if (netForce == -1) {
-                sArray[i] = 'L'
-            } else if (netForce == 1){
-                sArray[i] = 'R'
-            } else { 
-                // nothing happens
+            // right + right
+            if ((sArray[i-1]=='R') && (sArray[i+1]=='R')) {
+                rArray[i] = 'R'
             }
 
+            // . + left
+            if ((sArray[i-1]=='.') && (sArray[i+1]=='L')) {
+                rArray[i] = 'L'
+            }
+
+
+            // right + .
+            if ((sArray[i-1]=='R') && (sArray[i+1]=='.')) {
+                rArray[i] = 'R'
+            }
+
+
+
+
+
+        } else {
+            // the direction is known
+            rArray[i] = sArray[i]
         }
 
     }
@@ -122,25 +132,21 @@ function dominoDrop() {
     if (sArray[sArray.length-1] == '.') {
         // need to inspect the next item
         if (sArray[sArray.length-2]=='R') {
-            // drops to the left
-            sArray[sArray.length-1] = 'R'
+            // drops to the right
+            rArray[sArray.length-1] = 'R'
         }
     } else {
         // unchanged
+        rArray[sArray.length-1] = sArray[sArray.length-1]
     }
 
-    console.log('the final result: ' + sArray)
+    console.log('the final result: ' + rArray)
 }
 
 
-/**
- * in order to complete this properly, the program needs to create a new array to be populated 
- *  this will be an experiment to be left to the reader for now....
- */
 
 
 
- 
 
 
 
