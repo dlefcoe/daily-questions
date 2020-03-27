@@ -4,6 +4,7 @@ import turtle
 import random
 
 pen = turtle.Turtle()
+#pen.speed(1)
 txt = turtle.Turtle()
 
 # screen setup
@@ -27,6 +28,7 @@ def writeAtTop(v):
     txt.penup()
     txt.goto(200,200)
     txt.pendown()
+    txt.hideturtle()
     txt.color('white')
     txt.write("iteration value: " + str(v+1))
 
@@ -39,7 +41,6 @@ def drawShape():
     for i in range(rSize):
         randomColour = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
         pen.color(randomColour)
-        #pen.color('yellow')
         pen.forward(100)
         pen.left(155)
         writeAtTop(i)

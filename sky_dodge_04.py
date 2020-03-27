@@ -44,6 +44,7 @@ pygame.display.set_caption('DL skydodge game')
 
 # load game sounds
 thwack_01 = pygame.mixer.Sound(os.path.join(snd_folder, 'thwack-1.0\\PCM\\thwack-02.wav'))
+thwack_02 = pygame.mixer.Sound(os.path.join(snd_folder, 'thwack-1.0\\PCM\\thwack-03.wav'))
 
 # play sound
 thwack_01.play()
@@ -57,7 +58,7 @@ textRect02 = text.get_rect()
 textRect02.center = (WIDTH*0.60, HEIGHT*0.07)
 
 
-# play a sound
+
 
 
 class Player(pygame.sprite.Sprite):
@@ -155,17 +156,17 @@ while running:
                 player.x_speed += 1
 
     # position label
-    text = font.render('enemySmall distance measure x, y: ' + str(player.rect.x - enemySmall.rect.x) + ', ' + str(player.rect.y - enemySmall.rect.y), True, WHITE, BLACK)
-    text01 = font.render('enemyLarge distance measure x, y: ' + str(player.rect.x - enemy.rect.x) + ', ' + str(player.rect.y - enemy.rect.y), True, WHITE, BLACK)
+    text = font.render('enemySmall distance measure x, y: ' + str(player.rect.center[0] - enemySmall.rect.center[0]) + ', ' + str(player.rect.center[1] - enemySmall.rect.center[1]), True, WHITE, BLACK)
+    text01 = font.render('enemyLarge distance measure x, y: ' + str(player.rect.center[0] - enemy.rect.center[0]) + ', ' + str(player.rect.center[1] - enemy.rect.center[1]), True, WHITE, BLACK)
 
     # collision occurs
-    if abs(player.rect.x - enemySmall.rect.x) < 50 and abs(player.rect.y - enemySmall.rect.y) < 20:
-        print('condition reached')
-        thwack_01.play()
+    if abs(player.rect.center[0] - enemy.rect.center[0]) < 50 and abs(player.rect.center[1] - enemy.rect.center[1]) < 20:
+        print('large enemy count crash:')
+        thwack_02.play()
 
-    if abs(player.rect.x - enemySmall.rect.x) <50 and abs(player.rect.y - enemySmall.rect.y) < 30:
+    if abs(player.rect.center[0] - enemySmall.rect.center[0]) <50 and abs(player.rect.center[1] - enemySmall.rect.center[1]) < 30:
         countCrash += 1
-        text = font.render('count crash: ' + str(countCrash), True, WHITE, BLACK)
+        text = font.render('small enemy count crash: ' + str(countCrash), True, WHITE, BLACK)
         thwack_01.play()
         
 
