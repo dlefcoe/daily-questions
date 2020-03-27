@@ -65,82 +65,94 @@ function dominoDrop() {
 
     console.log('consecutive dots: ' + loopLenMax)
 
-    // inspect left most item
-    if (sArray[0] == '.') {
-        // need to inspect the next item
-        if (sArray[1]=='L') {
-            // drops to the left
-            rArray[0] = 'L'
-        }
-    } else {
-        // unchanged
-        rArray[0] = sArray[0]
-    }
 
-    
-    // inspect the middle items in the list
-    for (let i = 1; i <= sArray.length-2; i++) {
-        
-        
-        if (sArray[i]=='.') {
-            // has no direction
+    // the number of iterations required for all domino's to be tested
+    itReq = loopLenMax / 2
 
-            // nothing happens in these cases
-            // left + right
-            // right + left
-            // . + .
-            // . + right
-            // left + .
-            rArray[i] = sArray[i]
+    for (let j = 0; j < itReq; j++) {
+        console.log('pass: ' + j)
 
-            // cases when there is pushing and rArray changes
-
-            // left + left
-            if ((sArray[i-1]=='L') && (sArray[i+1]=='L')) {
-                rArray[i] = 'L'
+        // inspect left most item
+        if (sArray[0] == '.') {
+            // need to inspect the next item
+            if (sArray[1]=='L') {
+                // drops to the left
+                rArray[0] = 'L'
             }
-
-            // right + right
-            if ((sArray[i-1]=='R') && (sArray[i+1]=='R')) {
-                rArray[i] = 'R'
-            }
-
-            // . + left
-            if ((sArray[i-1]=='.') && (sArray[i+1]=='L')) {
-                rArray[i] = 'L'
-            }
-
-
-            // right + .
-            if ((sArray[i-1]=='R') && (sArray[i+1]=='.')) {
-                rArray[i] = 'R'
-            }
-
-
-
-
-
         } else {
-            // the direction is known
-            rArray[i] = sArray[i]
+            // unchanged
+            rArray[0] = sArray[0]
         }
+    
+        
+        // inspect the middle items in the list
+        for (let i = 1; i <= sArray.length-2; i++) {
+            
+            
+            if (sArray[i]=='.') {
+                // has no direction
+    
+                // nothing happens in these cases
+                // left + right
+                // right + left
+                // . + .
+                // . + right
+                // left + .
+                rArray[i] = sArray[i]
+    
+                // cases when there is pushing and rArray changes
+    
+                // left + left
+                if ((sArray[i-1]=='L') && (sArray[i+1]=='L')) {
+                    rArray[i] = 'L'
+                }
+    
+                // right + right
+                if ((sArray[i-1]=='R') && (sArray[i+1]=='R')) {
+                    rArray[i] = 'R'
+                }
+    
+                // . + left
+                if ((sArray[i-1]=='.') && (sArray[i+1]=='L')) {
+                    rArray[i] = 'L'
+                }
+    
+    
+                // right + .
+                if ((sArray[i-1]=='R') && (sArray[i+1]=='.')) {
+                    rArray[i] = 'R'
+                }
+    
+    
+    
+    
+    
+            } else {
+                // the direction is known
+                rArray[i] = sArray[i]
+            }
+    
+        }
+    
+    
+        // inspect right most item
+        if (sArray[sArray.length-1] == '.') {
+            // need to inspect the next item
+            if (sArray[sArray.length-2]=='R') {
+                // drops to the right
+                rArray[sArray.length-1] = 'R'
+            }
+        } else {
+            // unchanged
+            rArray[sArray.length-1] = sArray[sArray.length-1]
+        }
+    
+        console.log('the final result: ' + rArray)
 
+        // set old array = new array for next pass
+        sArray = rArray.slice()
     }
 
-
-    // inspect right most item
-    if (sArray[sArray.length-1] == '.') {
-        // need to inspect the next item
-        if (sArray[sArray.length-2]=='R') {
-            // drops to the right
-            rArray[sArray.length-1] = 'R'
-        }
-    } else {
-        // unchanged
-        rArray[sArray.length-1] = sArray[sArray.length-1]
-    }
-
-    console.log('the final result: ' + rArray)
 }
 
 
