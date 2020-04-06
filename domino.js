@@ -23,19 +23,21 @@ do they fall on each other ?
 
 */
 
+var s = '.L.R....L'
+
+//code to run
+dominoDrop(s)
 
 
-// code to run
-dominoDrop()
 
 
-
-
-
-function dominoDrop() {
+/**
+ * function to determine the domino drop result
+ * @param {string} s is the input string
+ */
+function dominoDrop(s) {
     console.log('the main function ran')
     
-    var s = '.L.R....L'
     var sArray = s.split('') // split into array
     var rArray = []
     
