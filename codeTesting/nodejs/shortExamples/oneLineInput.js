@@ -1,7 +1,7 @@
-const prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')()
 
 
-//const prompt = require('prompt-sync');
+
 
 const name = prompt('What is your name?')
 
@@ -18,6 +18,7 @@ c = 'hello'
 console.log(a)
 console.log(b)
 console.log(c)
+
 
 
 
