@@ -2,7 +2,7 @@
  * 
  * 
  * Given an array of integers, determine whether it contains a Pythagorean triplet.
- * Recall that a Pythogorean triplet (a, b, c) is defined by the equation a**2+ b**2= c**2.
+ * Recall that a Pythogorean triplet (a, b, c) is defined by the equation a**2 + b**2= c**2.
  * 
  * 
 */
@@ -14,6 +14,10 @@ const combinatorics = require('js-combinatorics')
 
 
 let array_of_integers = [1, 2, 3, 4, 5]
+
+
+let c = combinatorics.combination(array_of_integers, 3)
+
 
 let isTriplet = pTriplet(array_of_integers)
 
@@ -36,7 +40,7 @@ function pTriplet(a) {
     // start with a false
     let output = false 
 
-    // get all the permutations of the array
+    // get all the combinations of the array
     let cmb = combinatorics.combination(a, 3)
 
     // loop through the combinations
@@ -49,7 +53,7 @@ function pTriplet(a) {
         let bSq = smallSet[1]**2
         let cSq = smallSet[2]**2
 
-        // check if any satisfy a**2+ b**2= c**2
+        // check if any satisfy a**2 + b**2= c**2
         if (aSq == bSq + cSq) {
             // message success for this
             console.log(`triplet found: ${aSq}=${bSq}+${cSq}`)
