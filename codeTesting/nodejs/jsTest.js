@@ -45,3 +45,47 @@ console.log(`the random integer is ${rndInt}`)
 
 
 
+// hoisting example
+
+let hoistExample = 10
+console.log(`hoist example ${hoistExample}`)
+
+
+// list comprehension
+
+let testArray = [5,10,15,20,25,30]
+
+
+let newArrayDouble = []
+testArray.forEach(function (elem,index) {
+    // newArrayDouble.push(elem*2)  
+    newArrayDouble[index] = elem*2  
+})
+console.log(newArrayDouble)
+
+
+// ammend the list in place
+testArray.forEach((val, index)=>{testArray[index]= val*2})
+
+
+var doubleArray = [] // declare new array
+for (let i of testArray) {
+    doubleArray.push(i*2)    
+}
+
+console.log(doubleArray)
+
+
+// testing array things
+let newArr = Array(5)
+
+console.log(newArr)
+
+for (const iterator of Array(5)) {
+    console.log('hllo', iterator)
+}
+
+console.log([...Array(5).keys()])
+
+let range2 = [1,...4, 5]
+console.log(range2)

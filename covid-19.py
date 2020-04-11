@@ -5,10 +5,10 @@
 
 class CoronaData:
     ''' infomation about corona data '''
-
-    numberOfCases = 200_000
-    totalDeaths = 10_000
-    recoveries = 1_000
+    
+    numberOfCases = 2_000_000
+    totalDeaths = 100_000
+    recoveries = 375_000
     todaysDeaths = 300
     totalDailyCases = 7500
 
@@ -64,6 +64,8 @@ def coronaCalcs(cd=CoronaData, wp=WorldPopulation):
 
     print('second  method - comparing  deaths today to world population deaths today')
     print(coronaToWorldPopulationDeathsToday_percent)
+
+
 
 
 
