@@ -1,3 +1,5 @@
+
+
 /*
 
 You are given an string representing the initial conditions of some dominoes.
@@ -23,10 +25,11 @@ do they fall on each other ?
 
 */
 
-var s = '.L.R....L'
+let s = '.L.R....L'
 
 //code to run
 dominoDrop(s)
+
 
 
 
@@ -38,8 +41,8 @@ dominoDrop(s)
 function dominoDrop(s) {
     console.log('the main function ran')
     
-    var sArray = s.split('') // split into array
-    var rArray = []
+    let sArray = s.split('') // split into array
+    let rArray = []
     
     // log the result    
     console.log('the start array: ' + sArray)
@@ -50,10 +53,10 @@ function dominoDrop(s) {
     */
 
     //console.log('the length is ' + sArray.length)
-   
+
     // initialise loopLength
-    var loopLength = 0
-    var loopLenMax = 0
+    let loopLength = 0
+    let loopLenMax = 0
     for (let i = 0; i < sArray.length; i++) {
         if (sArray[i]=='.') {
             loopLength += 1
@@ -70,7 +73,7 @@ function dominoDrop(s) {
 
     // the number of iterations required for all domino's to be tested
     itReq = loopLenMax / 2
-
+    
     for (let j = 0; j < itReq; j++) {
         console.log('pass: ' + j)
 

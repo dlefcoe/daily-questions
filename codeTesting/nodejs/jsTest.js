@@ -87,5 +87,30 @@ for (const iterator of Array(5)) {
 
 console.log([...Array(5).keys()])
 
-let range2 = [1,...4, 5]
-console.log(range2)
+
+
+
+
+var numbers = [4, 9, 16, 25];
+var xSqrt = numbers.map(Math.sqrt)
+
+console.log(numbers)
+console.log(xSqrt)
+
+
+// make a new array based on an old array
+let xOperation = numbers.map((val) =>{
+    if (val < 10) {
+        return 10
+    }
+    else return val
+})
+
+console.log(xOperation)
+
+
+
+
+
+
+

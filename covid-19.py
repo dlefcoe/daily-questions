@@ -21,6 +21,13 @@ class WorldPopulation:
     deathsToday = 100_000
     populationGrowth = birthsToday - deathsToday
 
+    def __init__(self):
+        self.tryme = 1_000_000
+
+
+    def killPeople(num):
+        WorldPopulation.population = WorldPopulation.population - num
+
 
 
 def main():
@@ -65,7 +72,13 @@ def coronaCalcs(cd=CoronaData, wp=WorldPopulation):
     print('second  method - comparing  deaths today to world population deaths today')
     print(coronaToWorldPopulationDeathsToday_percent)
 
+    # killing the world population
+    print('killing the world population')
+    print(wp.population)
+    wp.killPeople(1000000000)
+    print(wp.population)
 
+    
 
 
 

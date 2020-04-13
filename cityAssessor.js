@@ -81,3 +81,5 @@ function westLooker(buildings) {
 }
 
 console.log('good views:',westLooker(buildings))
+
+
