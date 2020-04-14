@@ -20,6 +20,9 @@ Write a function that returns how many steps this will take for a given input N.
 
 
 import collections
+import statistics
+
+import matplotlib.pyplot as plt
 
 
 startNum = int(input('enter a 4 digit number: '))
@@ -46,7 +49,7 @@ def Kaprekar(n):
     numAsList = str(n)
     counter=collections.Counter(numAsList)
     if counter.most_common(1)[0][1] > 2:
-        print('the number', counter.most_common(1)[0][0], 'occurs too frequently')
+        #print('the number', counter.most_common(1)[0][0], 'occurs too frequently')
         return 'needs more distinct numbers'
 
     
@@ -64,7 +67,8 @@ def Kaprekar(n):
 
         # check if processed number = contant
         if processedNumber == contant:
-            return f'result found after {i+1} iterations'
+            # return f'result found after {i+1} iterations'
+            return i+1
         else:
             numAsList = str(processedNumber)
     
@@ -75,7 +79,30 @@ def Kaprekar(n):
 
 
 result = Kaprekar(startNum)
-
 print(result)
 
+
+# okay, lets loop through every number
+print('running the loop...')
+resultsSet = []
+for i in range(1000,9999):
+    dataPoint = Kaprekar(i)
+
+    # clean the data for numbers
+    if isinstance(dataPoint, int):
+        resultsSet.append(dataPoint)
+
+#print(resultsSet)
+
+print('number of results:', len(resultsSet))
+print('the least iterations:', min(resultsSet))
+print('the most iterations:', max(resultsSet))
+print('the average iterations:', round(statistics.mean(resultsSet),3))
+print('the stdev iterations:', round(statistics.stdev(resultsSet),3))
+
+
+plt.hist(resultsSet, density=False, bins=max(resultsSet))  # `density=False` would make counts
+plt.ylabel('frequency')
+plt.xlabel('number of iterations')
+plt.show()
 
