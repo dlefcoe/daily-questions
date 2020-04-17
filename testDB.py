@@ -51,7 +51,7 @@ x = db.all()
 print(x)
 
 # purge the database (remove all data)
-db.purge()
+#db.purge()
 
 x = db.all()
 print(x)
@@ -82,3 +82,16 @@ Query()
 Query().field == 2
 
 '''
+
+
+
+# x = json.load('testDB.json')
+#x = json.loads('testDB.json')
+#print(x)
+
+with open('testDB.json') as json_file:
+    data = json.load(json_file)
+    print(data)
+
+
+print(data)
