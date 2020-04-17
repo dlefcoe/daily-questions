@@ -108,5 +108,6 @@ print(inspect.getsource(foobar))
 
 
 
+x=5; y=3
 
-
+print(x,y)

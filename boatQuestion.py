@@ -12,9 +12,10 @@ For example, given a population with weights [100, 200, 150, 80] and a boat limi
 '''
 
 import itertools as it
+import time
 
-population = [30, 100, 200, 150, 80, 40, 100]
-population = [100, 200, 150, 80]
+population = [30, 100, 200, 150, 80, 40, 100, 100, 100, 100, 90]
+#population = [100, 200, 150, 80]
 boatLimit = 200
 
 def rescue(population, boatLimit, numBoats):
@@ -55,8 +56,8 @@ def rescue(population, boatLimit, numBoats):
 
 
 
-
+t1 = time.time()
 rescue(population, boatLimit, 0)
-
-
+t2 = time.time()
+print('time taken:', round(t2-t1, 3), 'seconds')
 
