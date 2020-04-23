@@ -1,6 +1,14 @@
+'''
+sky dodge game
+
+by: @dlefcoe
+
+'''
+
+
 # sky dodge game
 
-# import the pygame library
+# import the pygame module
 import os
 import pygame
 import random
@@ -17,7 +25,7 @@ from pygame.locals import(
     QUIT
 )
 
-# define size
+# define size (for screen)
 WIDTH = 800
 HEIGHT = 500
 
@@ -29,9 +37,9 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 DARKBLUE = (25, 25, 150)
 DARKRED = (100, 0, 0)
-WHITE = (255, 255, 255)
 
 
 # set up assets folders
@@ -88,6 +96,8 @@ class Player(pygame.sprite.Sprite):
             self.y_speed = 1
         if self.rect.left > WIDTH:
             self.rect.right = 0
+        if self.rect.right < 0:
+            self.rect.left = WIDTH
             
 
 class Enemy(pygame.sprite.Sprite):
@@ -101,7 +111,7 @@ class Enemy(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
         self.rect.center = (int(WIDTH*0.95), int(HEIGHT*0.5))
-        self.rect.size     
+        #self.rect.size     
         self.x_speed = random.randint(-2,2)
         self.y_speed = random.randint(-2,2)
 
@@ -129,6 +139,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
+
+# initialise player
 player = Player()
 
 
@@ -171,12 +183,17 @@ while running:
             # right arrow pressed
             if event.key == pygame.K_RIGHT:
                 player.x_speed += 1
+            # escape key pressed
+            if event.key == pygame.K_ESCAPE:
+                running = False
+            
 
     # position label
     text = font.render('enemy[0] distance measure x, y: ' + str(player.rect.center[0] - enemy[0].rect.center[0]) + ', ' + str(player.rect.center[1] - enemy[0].rect.center[1]), True, WHITE, BLACK)
     text01 = font.render('number of enemies: ' + str(numEnemies), True, WHITE, BLACK)
+
     # collision occurs
-    collisionRadius = 25
+    collisionRadius = 50
     if abs(player.rect.center[0] - enemy[0].rect.center[0]) < collisionRadius and abs(player.rect.center[1] - enemy[0].rect.center[1]) < collisionRadius:
         print('enemy count crash:', numEnemies)
         thwack_02.play()
@@ -199,7 +216,7 @@ while running:
             'dl-rocket-pink-up-01.png','dl-rocket-cyan-up-01.png', 'dl-rocket-brown-up-01.png']
         # make new list of enemies
         for i in range(numEnemies):
-            enemy[i].rect.center = (int(WIDTH*random.uniform(0.5, 1)), int(HEIGHT*random.uniform(0.05,0.95)))
+            enemy[i].rect.center = (int(WIDTH*random.uniform(0.25, 0.95)), int(HEIGHT*random.uniform(0.05,0.95)))
             enemy[i].image = pygame.image.load(os.path.join(img_folder, random.choice(imageName))).convert()
             enemy[i].image.set_colorkey(WHITE)
 
