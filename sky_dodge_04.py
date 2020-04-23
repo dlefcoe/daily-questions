@@ -3,6 +3,7 @@
 # import the pygame library
 import os
 import pygame
+import random
 
 
 # import pygame locals for easier access to key coordiantes
@@ -28,9 +29,10 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
-LIGHTBLUE = (100, 100, 255)
+DARKBLUE = (25, 25, 150)
 DARKRED = (100, 0, 0)
 WHITE = (255, 255, 255)
+
 
 # set up assets folders
 game_folder = os.path.dirname(__file__)
@@ -53,11 +55,9 @@ thwack_01.play()
 font = pygame.font.SysFont('monospace',12)
 text = font.render('sky dodge text', True, WHITE, BLACK)
 textRect = text.get_rect()
-textRect.center = (WIDTH*0.60, HEIGHT*0.05)
+textRect.center = (int(WIDTH*0.60), int(HEIGHT*0.05))
 textRect02 = text.get_rect()
-textRect02.center = (WIDTH*0.60, HEIGHT*0.07)
-
-
+textRect02.center = (int(WIDTH*0.60), int(HEIGHT*0.07))
 
 
 
@@ -67,20 +67,19 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         #self.image = pygame.Surface((50, 50))
         #self.image.fill(DARKRED)
-        imageName = ['marsRocket_01.jpg', 'retro_aircraft_01.png']
-        self.image = pygame.image.load(os.path.join(img_folder, imageName[1])).convert()
-        self.image.set_colorkey(BLACK)
+        imageName = ['marsRocket_01.jpg', 'retro_aircraft_01.png','DL-rocket-red-01.png']
+        self.image = pygame.image.load(os.path.join(img_folder, imageName[2])).convert()
+        self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH*0.25, HEIGHT / 2)
-        self.x_speed = 5
+        self.rect.center = (int(WIDTH*0.25), int(HEIGHT / 2))
+        self.x_speed = 4
         self.y_speed = 0
-        self.scale = 75
+        #self.scale = 50
 
     def update(self):
         ''' update the player '''
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
-        self.image = pygame.transform.scale(self.image,(self.scale,self.scale))
 
         # dont get to close to top or bottom
         if self.rect.bottom > HEIGHT - 10:
@@ -92,23 +91,38 @@ class Player(pygame.sprite.Sprite):
             
 
 class Enemy(pygame.sprite.Sprite):
-    ''' class for player sprite '''
+    ''' class for enemy sprite '''
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        imageName = ['marsRocket_01.jpg', 'retro_aircraft_01.png', 'spaceship_24px.png', 'flaticon_rocket_512px.png']
-        self.image = pygame.image.load(os.path.join(img_folder, imageName[3])).convert()
+        imageName = ['dl-rocket-orange-up-01.png','dl-rocket-green-up-01.png',
+            'dl-rocket-pink-up-01.png','dl-rocket-cyan-up-01.png', 'dl-rocket-brown-up-01.png']
+        self.image = pygame.image.load(os.path.join(img_folder, random.choice(imageName))).convert()
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH*0.95, HEIGHT*0.50)
-        self.x_speed = 0
-        self.y_speed = 0
-        self.scale = 50 # scale the image size
+        self.rect.center = (int(WIDTH*0.95), int(HEIGHT*0.5))
+        self.rect.size     
+        self.x_speed = random.randint(-2,2)
+        self.y_speed = random.randint(-2,2)
+
 
     def update(self):
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
-        self.image = pygame.transform.scale(self.image,(self.scale,self.scale))
+
+
+        # dont get to close to top or bottom
+        if self.rect.bottom > HEIGHT - 10:
+            self.y_speed = -2
+        if self.rect.top < 10:
+            self.y_speed = 1
+        if self.rect.left > WIDTH:
+            self.rect.right = 0
+        if self.rect.right < 0:
+            self.rect.left = WIDTH
+
+
+
 
 #setup the drawing window
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -118,14 +132,17 @@ all_sprites = pygame.sprite.Group()
 player = Player()
 
 
-enemy = Enemy()
-enemy.rect.center = (WIDTH*1.25, HEIGHT*1.0)
-enemySmall = Enemy()
+# make list of ememies
+enemy = []
 
-enemySmall.rect.center = (WIDTH*1.0, HEIGHT*0.75)
-enemySmall.scale = 20
+numEnemies = 5
+for i in range(numEnemies):
+    enemy.append(Enemy())
+    enemy[i].rect.center = (int(WIDTH*random.uniform(0.25, 0.95)), int(HEIGHT*random.uniform(0.1,0.95)))
+    
 
-all_sprites.add(player, enemy, enemySmall)
+all_sprites.add(player, enemy)
+
 
 # run until the user asks to quit
 running = True
@@ -156,30 +173,46 @@ while running:
                 player.x_speed += 1
 
     # position label
-    text = font.render('enemySmall distance measure x, y: ' + str(player.rect.center[0] - enemySmall.rect.center[0]) + ', ' + str(player.rect.center[1] - enemySmall.rect.center[1]), True, WHITE, BLACK)
-    text01 = font.render('enemyLarge distance measure x, y: ' + str(player.rect.center[0] - enemy.rect.center[0]) + ', ' + str(player.rect.center[1] - enemy.rect.center[1]), True, WHITE, BLACK)
-
+    text = font.render('enemy[0] distance measure x, y: ' + str(player.rect.center[0] - enemy[0].rect.center[0]) + ', ' + str(player.rect.center[1] - enemy[0].rect.center[1]), True, WHITE, BLACK)
+    text01 = font.render('number of enemies: ' + str(numEnemies), True, WHITE, BLACK)
     # collision occurs
-    if abs(player.rect.center[0] - enemy.rect.center[0]) < 50 and abs(player.rect.center[1] - enemy.rect.center[1]) < 20:
-        print('large enemy count crash:')
+    collisionRadius = 25
+    if abs(player.rect.center[0] - enemy[0].rect.center[0]) < collisionRadius and abs(player.rect.center[1] - enemy[0].rect.center[1]) < collisionRadius:
+        print('enemy count crash:', numEnemies)
         thwack_02.play()
 
-    if abs(player.rect.center[0] - enemySmall.rect.center[0]) <50 and abs(player.rect.center[1] - enemySmall.rect.center[1]) < 30:
-        countCrash += 1
-        text = font.render('small enemy count crash: ' + str(countCrash), True, WHITE, BLACK)
-        thwack_01.play()
+        # reduce number of enemies
+        # enemy.pop()
+        enemy[numEnemies-1].image.fill(BLACK)
+        enemy[numEnemies-1].image.set_colorkey(BLACK)
+        numEnemies = numEnemies - 1
+
+        # no enemies left
+        if numEnemies < 1:
+            text01 = font.render('game over', True, WHITE, BLACK)
+            # exit game
+            running = False
+            
+            
+
+        imageName = ['dl-rocket-orange-up-01.png','dl-rocket-green-up-01.png',
+            'dl-rocket-pink-up-01.png','dl-rocket-cyan-up-01.png', 'dl-rocket-brown-up-01.png']
+        # make new list of enemies
+        for i in range(numEnemies):
+            enemy[i].rect.center = (int(WIDTH*random.uniform(0.5, 1)), int(HEIGHT*random.uniform(0.05,0.95)))
+            enemy[i].image = pygame.image.load(os.path.join(img_folder, random.choice(imageName))).convert()
+            enemy[i].image.set_colorkey(WHITE)
+
+
+
         
-
-    
-    
-
 
 
     # update
     all_sprites.update()
 
     # draw / render
-    screen.fill(LIGHTBLUE) # fill background light blue
+    screen.fill(DARKBLUE) # fill background dark blue
     all_sprites.draw(screen)
 
     # write text
