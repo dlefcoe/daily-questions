@@ -3,6 +3,9 @@ sky dodge game
 
 by: @dlefcoe
 
+
+music from: https://freemusicarchive.org/genre/Instrumental
+
 '''
 
 
@@ -25,6 +28,7 @@ from pygame.locals import(
     QUIT
 )
 
+
 # define size (for screen)
 WIDTH = 800
 HEIGHT = 500
@@ -38,8 +42,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-DARKBLUE = (25, 25, 150)
-DARKRED = (100, 0, 0)
+
 
 
 # set up assets folders
@@ -50,14 +53,19 @@ snd_folder = os.path.join(game_folder, 'snd')
 # initialise pygame
 pygame.init()
 
+# caption and background
 pygame.display.set_caption('DL skydodge game')
+background = pygame.image.load(os.path.join(img_folder,'space_background_01.jpg'))
+background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
 # load game sounds
 thwack_01 = pygame.mixer.Sound(os.path.join(snd_folder, 'thwack-1.0\\PCM\\thwack-02.wav'))
 thwack_02 = pygame.mixer.Sound(os.path.join(snd_folder, 'thwack-1.0\\PCM\\thwack-03.wav'))
+soundFile = os.path.join(snd_folder, 'Chad_Crouch_-_Algorithms.mp3')
+pygame.mixer.music.load(soundFile)
 
 # play sound
-thwack_01.play()
+pygame.mixer.music.play(loops=-1)
 
 # text message to player
 font = pygame.font.SysFont('monospace',12)
@@ -159,10 +167,26 @@ all_sprites.add(player, enemy)
 # run until the user asks to quit
 running = True
 countCrash = 0
+speedLimit = 20
 while running:
-
+    
     # keep loop running at correct speed
     clock.tick(FPS)
+
+    # mouse position
+    mousePosition = pygame.mouse.get_pos()
+
+
+    # head towards mouse, but not too quickly
+    if mousePosition[0] > player.rect.center[0] and player.x_speed < speedLimit:
+        player.x_speed = int((mousePosition[0] - player.rect.center[0])/10)
+    if mousePosition[0] < player.rect.center[0] and player.x_speed > -speedLimit:
+        player.x_speed = int((mousePosition[0] - player.rect.center[0])/10)
+    if mousePosition[1] > player.rect.center[1] and player.y_speed < speedLimit:
+        player.y_speed = int((mousePosition[1] - player.rect.center[1])/10)
+    if mousePosition[1] < player.rect.center[1] and player.y_speed > -speedLimit:
+        player.y_speed = int((mousePosition[1] - player.rect.center[1])/10)
+
 
     # events in pygame
     for event in pygame.event.get():
@@ -228,9 +252,10 @@ while running:
     # update
     all_sprites.update()
 
-    # draw / render
-    screen.fill(DARKBLUE) # fill background dark blue
+    # draw background image and sprites
+    screen.blit(background, (0, 0))
     all_sprites.draw(screen)
+    
 
     # write text
     screen.blit(text, textRect)
