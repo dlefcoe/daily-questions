@@ -62,6 +62,7 @@ background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 thwack_01 = pygame.mixer.Sound(os.path.join(snd_folder, 'thwack-1.0\\PCM\\thwack-02.wav'))
 thwack_02 = pygame.mixer.Sound(os.path.join(snd_folder, 'thwack-1.0\\PCM\\thwack-03.wav'))
 soundFile = os.path.join(snd_folder, 'Chad_Crouch_-_Algorithms.mp3')
+soundFile_LastEnemy = os.path.join(snd_folder, 'WHY_-_02_-_crashlanding_in_gaza.mp3')
 pygame.mixer.music.load(soundFile)
 
 # play sound
@@ -114,7 +115,7 @@ class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         imageName = ['dl-rocket-orange-up-01.png','dl-rocket-green-up-01.png',
-            'dl-rocket-pink-up-01.png','dl-rocket-cyan-up-01.png', 'dl-rocket-brown-up-01.png']
+            'dl-rocket-pink-up-01.png','dl-rocket-cyan-up-01.png', 'dl-rocket-brown-up-01.png','dl-rocket-purple-up-01.png']
         self.image = pygame.image.load(os.path.join(img_folder, random.choice(imageName))).convert()
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
@@ -155,7 +156,7 @@ player = Player()
 # make list of ememies
 enemy = []
 
-numEnemies = 5
+numEnemies = 10
 for i in range(numEnemies):
     enemy.append(Enemy())
     enemy[i].rect.center = (int(WIDTH*random.uniform(0.25, 0.95)), int(HEIGHT*random.uniform(0.1,0.95)))
@@ -220,7 +221,9 @@ while running:
     collisionRadius = 50
     if abs(player.rect.center[0] - enemy[0].rect.center[0]) < collisionRadius and abs(player.rect.center[1] - enemy[0].rect.center[1]) < collisionRadius:
         print('enemy count crash:', numEnemies)
-        thwack_02.play()
+        thwack_01.play()
+        thwack_02.play(2)
+
 
         # reduce number of enemies
         # enemy.pop()
@@ -228,13 +231,16 @@ while running:
         enemy[numEnemies-1].image.set_colorkey(BLACK)
         numEnemies = numEnemies - 1
 
+        # 1 enemy left    
+        if numEnemies < 2:
+            pygame.mixer.music.load(soundFile_LastEnemy)
+            pygame.mixer.music.play()    
+        
         # no enemies left
         if numEnemies < 1:
             text01 = font.render('game over', True, WHITE, BLACK)
             # exit game
             running = False
-            
-            
 
         imageName = ['dl-rocket-orange-up-01.png','dl-rocket-green-up-01.png',
             'dl-rocket-pink-up-01.png','dl-rocket-cyan-up-01.png', 'dl-rocket-brown-up-01.png']
@@ -243,10 +249,6 @@ while running:
             enemy[i].rect.center = (int(WIDTH*random.uniform(0.25, 0.95)), int(HEIGHT*random.uniform(0.05,0.95)))
             enemy[i].image = pygame.image.load(os.path.join(img_folder, random.choice(imageName))).convert()
             enemy[i].image.set_colorkey(WHITE)
-
-
-
-        
 
 
     # update

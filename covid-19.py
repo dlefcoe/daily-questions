@@ -82,9 +82,6 @@ def coronaCalcs(cd=CoronaData, wp=WorldPopulation):
 
 
 
-
-
-
 main()
 
 
