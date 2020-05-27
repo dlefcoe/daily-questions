@@ -15,15 +15,14 @@ Write a program to determine whether a given input is a Toeplitz matrix.
 
 '''
 
-# # matrix is a Toeplitz matrix or not 
-# N = 5
-# M = 4
+
   
 
 # Function to check if all elements present in 
 # descending diagonal starting from position 
 # (i, j) in the matrix are all same or not 
 def checkDiagonal(mat, i, j):
+    ''' check the diagonal for a given matrix '''
     
     # matrix dimensions
     N = len(mat)

@@ -16,11 +16,19 @@ tickerArray = ['ISF', 'CSRU', 'ITKY', 'SEDY', 'FXC', 'IDVY', 'EIMU', 'LTAM', 'IB
 
 # put the data into a dataframe
 #df = pd.DataFrame(columns=tickerArray, data=peArray)
-df = pd.DataFrame(index=tickerArray, data=peArray, columns=['pe ratio'])
+#df = pd.DataFrame(index=tickerArray, data=peArray, columns=['pe ratio'])
+df = pd.DataFrame({'ticker':tickerArray, 'pe':peArray, 'pe old':peArray_2020_04_14})
 print('the dataframe')
 print(df)
 
-df.plot()
+
+# gca stands for 'get current axis'
+ax = plt.gca()
+
+df.plot(kind='bar',x='ticker', y='pe', ax=ax)
+df.plot(kind='bar',x='ticker', y='pe old', color='red', ax=ax)
+plt.show()
+# print(df.head())
 
 # Return evenly spaced values within a given interval
 npSize = np.arange(len(tickerArray))

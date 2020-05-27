@@ -21,6 +21,7 @@ db.insert({'type': 'apple', 'count': 7})
 db.insert({'type': 'peach', 'count': 3})
 
 
+
 # get all documents stored in the database
 x = db.all()
 print(x)
