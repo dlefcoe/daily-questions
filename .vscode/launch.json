@@ -8,30 +8,30 @@
         // nodes
         {
             "type": "node",
-            "request": "launch",
             "name": "node: Launch Program",
+            "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
         },
         {
             "type": "node",
-            "request": "launch",
             "name": "node: Launch Program (External Terminal)",
+            "request": "launch",
             "program": "${file}",
             "console": "externalTerminal"
         },
 
         // pythons
         {
-            "name": "Python: Current File",
             "type": "python",
+            "name": "Python: Current File",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
         },
         {
-            "name": "Python: Current File (External Terminal)",
             "type": "python",
+            "name": "Python: Current File (External Terminal)",
             "request": "launch",
             "program": "${file}",
             "console": "externalTerminal"
