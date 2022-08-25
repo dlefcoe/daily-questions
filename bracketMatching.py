@@ -5,8 +5,8 @@ Given a string of round, curly, and square open and closing brackets, return whe
 For example, given the string "([])[]({})", you should return true.
 Given the string "([)]" or "((()", you should return false.
 
-The solution code was written by my friend:
-Darren Ross
+The solution code was written by my friend and modded my me:
+d ross
 
 '''
 
@@ -30,7 +30,7 @@ def parse(inputstring):
     # Work from left to right, appending and removing from stack
     # when encountering openers and closers respectively
     stack = []
-    print("Input is {}".format(inputstring))
+    print(f"Input is {inputstring}")
 
     for pos, char in enumerate(inputstring):
         if char in openers:
@@ -41,7 +41,7 @@ def parse(inputstring):
             # and if so remove it from our stack
             if not stack:
                 # stack is empty so no corresponding opener exists
-                print("Closer '{}' found without preceeding opener at pos {}".format(char, pos))
+                print(f"Closer '{char}' found without preceeding opener at pos {pos}")
                 return False
 
             expected_closer = closers[openers.index(stack[-1])]
@@ -53,7 +53,7 @@ def parse(inputstring):
                 return False
     # End of string reached so stack should be empty
     if stack:
-        print("Expected opener or '{}', got END OF STRING".format(expected_closer))
+        print(f"Expected opener or '{expected_closer}', got END OF STRING")
         return False
     return True
 
