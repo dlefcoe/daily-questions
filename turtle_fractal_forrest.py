@@ -29,7 +29,7 @@ def tree(size, levels):
 
     tree(size*0.8, levels-1)
 
-    ttl.left(angle * 2.5)
+    ttl.left(angle * 2)
     tree(size*0.8, levels-1)
 
     ttl.right(angle)
