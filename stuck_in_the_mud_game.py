@@ -21,9 +21,17 @@ while True:
         print('more than 100 games played: you won !!!')
         break
 
-    dice = [random.randint(1,6) for i in range(number_rolls)]
-    dice = [d for d in dice if d in [1,3,4,6]]  # remove 2 & 5
+    # user input:
+    play_game = input("Enter r to roll the dice or q to quit: ")
+    if play_game == 'q':
+        break
+    
 
+    dice = [random.randint(1,6) for i in range(number_rolls)]
+    print('dice rolled:', dice)
+    dice = [d for d in dice if d in [1,3,4,6]]  # remove 2 & 5
+    number_rolls = len(dice)
+    
     if len(dice) == 0:
         break
 
@@ -35,3 +43,4 @@ while True:
 print('---end---')
 print('games played:', games_played)
 print('final score', score)
+
