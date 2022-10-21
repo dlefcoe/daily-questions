@@ -1,1 +1,5 @@
 answers to the questions.
+
+MDS500 Python Programming For Data Science:
+ - There were 7 assignments (marked 2 to 8).
+ - They are all done in turn here.
