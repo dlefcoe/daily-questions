@@ -1,0 +1,27 @@
+def slope(f:object, x):
+    '''
+    find the slope of a function 
+    
+    args:
+        f (function): the function that we are trying to compute
+        x (float): the point at which we want to find the slope
+    
+    returns:
+        slope: the slope at that point
+
+    '''
+    increment = 0.001
+
+    slope = (f(x+increment) - f(x)) / increment
+
+    return slope
+
+def f(x):
+    ''' example function '''
+    # f(x) = x**2
+    return x**2
+
+
+
+result = slope(f, 10)
+print(result)
