@@ -1,0 +1,8 @@
+{
+    "current time": "2022-12-28 02:02:21",
+    "source folder": "C:/path/to/the/source",
+    "destination folder": "C:/path/to/the/destination",
+    "cut off date": "2022-01-01",
+    "files to backup": 2,
+    "backed up files": 2
+}
