@@ -20,8 +20,10 @@ notice how:
 # builtin imports
 import json
 
+
 # external imports
 import pandas as pd
+import requests
 
 
 def main():
@@ -29,13 +31,27 @@ def main():
     
     url = 'https://github.com/dlefcoe/daily-questions/blob/master/perform_backup/inputs.json'
     raw_url = rawify_git(url)
-    read_git(raw_url)
+    x = read_git_pandas(raw_url)
+    y = read_git_request(raw_url)
+
+    print('dataframe:', '\n', x, '\n')
+    print('dict:', '\n', y)
 
 
-def read_git(url):
-    ''' read git from raw url '''
+def read_git_pandas(url:str)->pd.DataFrame:
+    ''' read git from raw url into a pandas dataframe '''
     df = pd.read_json(url, typ='series')
-    print(df)
+
+    return df
+
+
+def read_git_request(url:str) -> dict:
+    ''' read git from raw url into a python dict '''
+    response = requests.get(url)
+    data = json.loads(response.text)
+
+    return data
+    
 
 
 def rawify_git(url:str):
