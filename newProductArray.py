@@ -26,12 +26,17 @@ import numpy as np
 startArray =[1, 20, 13, 24, 15]
 saP = np.prod(startArray)
 
+
 prodArray = []
 for e in startArray:
-    prodArray.append(saP / e)
+    prodArray.append(saP // e)
     
-print(prodArray)
+print(prodArray, '\n')
 
+
+print('lets try a list comprehension >>')
+saP = np.prod(startArray)
+print([saP // e for e in startArray], '\n')
 
 
 ''' 
@@ -48,7 +53,7 @@ print('same method without dividing >>')
 
 newArray = []
 for i, val in enumerate(startArray):
-    print(i)
+    # print(i)
     
     poppedVal = startArray.pop(i) # remove item from list
     saP = np.prod(startArray) # calc the product
