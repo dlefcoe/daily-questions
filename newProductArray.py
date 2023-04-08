@@ -19,6 +19,7 @@ Follow-up: what if you can't use division?
 
 
 """
+# %%
 
 import numpy as np
 
@@ -56,5 +57,6 @@ for i, val in enumerate(startArray):
 
 
 print(newArray)
+
 
 
