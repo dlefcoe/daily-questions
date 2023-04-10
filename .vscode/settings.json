@@ -2,6 +2,7 @@
     "python.pythonPath": "C:\\Users\\darren\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=pygame"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "off"
 
 }
