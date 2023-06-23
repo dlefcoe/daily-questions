@@ -32,10 +32,10 @@ def force_mass_acceleration(
         mass:float|None=None, 
         acceleration:float|None=None) -> float|str:
     '''
-    work out either:
+    given any two knowns, find the unknown:
         - force, masss or acceleration
         - using, force = mass x acceleration
-        - given any two parameters with one unknown
+        - given any two known parameters find the unknown parameter
     
     args:
         force: the force of the object (newtons)
@@ -43,7 +43,7 @@ def force_mass_acceleration(
         acceleration: the acceleration of the object (m/s**2)
     
     returns:
-        the missing parameter, either force or mass or acceleration.
+        the unknown parameter, either force or mass or acceleration.
     '''
     
     if force == None:
