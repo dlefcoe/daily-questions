@@ -7,7 +7,7 @@ and an example
 '''
 
 
-class Colours:
+class TerminalColours:
     '''  ANSI escape codes used for defining a color. '''
 
     # colours
@@ -29,7 +29,7 @@ class Colours:
 
 def main():
     """ example usage """
-    c = Colours()
+    c = TerminalColours()
     print(f'{c.magenta}hi there{c.end}')
     print(f'{c.blue}hi there{c.end}')
     print(f'{c.cyan}hi there{c.end}')
