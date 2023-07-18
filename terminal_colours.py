@@ -37,7 +37,8 @@ def main():
     print(f'{c.red}hi there{c.end}')
     print(f'{c.white}hi there{c.end}')
     print(f'{c.bold}hi there{c.end}')
-    print(f'{c.underline}hi there{c.end}')    
+    print(f'{c.underline}hi there{c.end}')
+    print('the end...')
 
 
 if __name__ == '__main__':
