@@ -5,7 +5,19 @@ get the shortest word from a sentance in Python.
 
 import string
 
-s = 'The shortest word is x'
+
+def main():
+
+    # the first method
+    s = 'The shortest word is x'
+    r = shortest_word(s)
+    print(r)
+
+    # the second method
+    sentence = "Hi there! This is another sample, sentence with punctuation."
+    r = new_short_word(sentence)
+    print('the new shortest word is:', r)
+
 
 def shortest_word(s:str):
 
@@ -13,16 +25,6 @@ def shortest_word(s:str):
     min_key = next(k for k,v in words.items() if v==min(words.values()))
 
     return min_key
-
-r = shortest_word(s)
-print(r)
-
-
-
-
-
-sentence = "Hi there! This is another sample, sentence with punctuation."
-
 
 
 def new_short_word(sentence:str):
@@ -41,8 +43,14 @@ def new_short_word(sentence:str):
     return shortest_word
 
 
-r = new_short_word(sentence)
-print('the new shortest word is:', r)
+
+
+
+if __name__=='__main__':
+    # run as the main program guard
+    main()
+
+
 
 
 
