@@ -1,5 +1,10 @@
 '''
 estimate the value of e in pyhton
+
+- Select numbers between 0 and 1 randomly until sum is > 1. 
+- The expected # of selections needed is equal to e.
+- The `measured average`.
+
 '''
 
 import random
