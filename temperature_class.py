@@ -2,6 +2,8 @@
 temperature conversion class example.
 converts from C to F or F to C.
 
+https://github.com/dlefcoe/daily-questions/blob/master/temperature_class.py
+
 '''
 __author__ = '@dlefcoe'
 
@@ -21,7 +23,7 @@ class Temp:
         elif self.unit == 'f':
             self.farenheight_to_celcius()
         else:
-            
+
             raise ValueError(
                 f'unit given was {self.unit}.\n'
                 f'unit needs to be "c" or "f".')
@@ -43,14 +45,16 @@ def main():
     ''' main entry point for the code '''
     t1 = Temp(10, 'c')
     t2 = Temp(t1.value, t1.unit)
-    print(t1)
-    print(t2)
+    t3 = Temp(t2.value, t2.unit)   
+    print('the first temp, t1:', t1)
+    print('the converted temp, t2:', t2)
+    print('the re-converted temp, t3:',t3)
+
+    print('t1=t2:',t1==t2)
+    print('t1=t3:',t1==t3)
     return
 
 
 # main guard idiom
 if __name__=='__main__':
     main()
-
-
-
